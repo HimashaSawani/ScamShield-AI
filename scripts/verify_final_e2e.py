@@ -22,7 +22,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST_SHA256 = "833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9"
+MANIFEST_SHA256 = "b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606"
 
 
 def totp_code(secret_b32: str) -> str:
@@ -50,7 +50,7 @@ def main():
             "DATABASE_URL": f"sqlite:///{db_path}",
             "STORAGE_PATH": str(storage_path),
             "DEV_EMAIL_TOKENS": "1",
-            "SCAMSHIELD_MODEL_DIR": str(ROOT / "ml" / "artifacts" / "v1-json"),
+            "SCAMSHIELD_MODEL_DIR": str(ROOT / "ml" / "artifacts" / "v2-json"),
             "SCAMSHIELD_MODEL_MANIFEST_SHA256": MANIFEST_SHA256,
         }
         env.pop("SMTP_HOST", None)
@@ -181,7 +181,7 @@ def main():
             st_mod, mod_data = api("/model", token=token_a)
             assert st_mod == 200
             assert mod_data["models"]["mode"] == "rules-plus-model"
-            assert mod_data["models"]["enabled"] == [{"kind": "url", "version": "scamshield-url-v1"}]
+            assert mod_data["models"]["enabled"] == [{"kind": "url", "version": "scamshield-url-v2"}]
 
             # -----------------------------------------------------------------
             # WORKFLOW B: Suspicious synthetic URL -> queue -> worker -> result -> explanation -> history
@@ -193,7 +193,7 @@ def main():
             assert scan_b["status"] == "completed"
             assert scan_b["result"]["assessment"] in ("High", "Medium")
             assert scan_b["result"]["model_mode"] == "rules-plus-model"
-            assert any(m["version"] == "scamshield-url-v1" and m["prediction"] == "phishing" for m in scan_b["result"]["models"])
+            assert any(m["version"] == "scamshield-url-v2" and m["prediction"] == "phishing" for m in scan_b["result"]["models"])
             st_hist, hist_a = api("/scans", token=token_a)
             assert st_hist == 200 and any(s["id"] == scan_b["id"] for s in hist_a)
             workflows["B_suspicious_url_scan"] = {
