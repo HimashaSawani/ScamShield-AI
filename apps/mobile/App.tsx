@@ -5,7 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import {Evidence, EvidenceItem, HighlightedMessage, ResultHeader, UrlDetail, UrlObservations} from './ResultPresentation';
 import {StatusBar} from 'expo-status-bar';
 
-const API = process.env.EXPO_PUBLIC_API_URL || 'http://10.0.2.2:8015/api';
+const API = process.env.EXPO_PUBLIC_API_URL || 'http://10.0.2.2:8000/api';
 
 type Scan = {
   id: string;
@@ -113,9 +113,13 @@ export default function App() {
   const [teamUsers, setTeamUsers] = useState<TeamUser[]>([]);
   const [auditLogs, setAuditLogs] = useState<AuditItem[]>([]);
 
-  // MFA setup state in Settings
+  // MFA setup & recovery regeneration state in Settings
   const [enrollSecret, setEnrollSecret] = useState('');
   const [enrollOtp, setEnrollOtp] = useState('');
+  const [showRegenMfa, setShowRegenMfa] = useState(false);
+  const [reauthPassword, setReauthPassword] = useState('');
+  const [reauthOtp, setReauthOtp] = useState('');
+  const [reauthRecovery, setReauthRecovery] = useState('');
 
   async function api(path: string, method = 'GET', body?: object | FormData) {
     const headers: Record<string, string> = {
@@ -1091,18 +1095,37 @@ export default function App() {
                   {user?.mfa_enabled ? (
                     <>
                       <Text style={styles.description}>MFA is active on your account.</Text>
-                      {button(
-                        'Regenerate Recovery Codes',
-                        () =>
-                          run(async () => {
-                            const res = await api('/auth/mfa/recovery-codes', 'POST', {
-                              password: 'ScamShieldDemo123!',
-                              otp: '',
-                              recovery_code: '',
-                            });
-                            Alert.alert('Recovery Codes', res.recovery_codes?.join('\n') || 'Codes regenerated');
-                          }),
-                        true
+                      {showRegenMfa ? (
+                        <View style={styles.mfaEnrollBox}>
+                          <Text style={styles.fine}>Reauthenticate to regenerate recovery codes (revokes active sessions):</Text>
+                          {input(reauthPassword, setReauthPassword, 'Current password (10+ characters)', true)}
+                          {input(reauthOtp, setReauthOtp, 'Authenticator code (6 digits)')}
+                          {input(reauthRecovery, setReauthRecovery, 'Or an unused recovery code')}
+                          {button('Confirm & Regenerate Codes', () =>
+                            run(async () => {
+                              const res = await api('/auth/mfa/recovery-codes', 'POST', {
+                                password: reauthPassword,
+                                otp: reauthOtp,
+                                recovery_code: reauthRecovery,
+                              });
+                              setShowRegenMfa(false);
+                              setReauthPassword('');
+                              setReauthOtp('');
+                              setReauthRecovery('');
+                              Alert.alert(
+                                'Save Your New Recovery Codes',
+                                (res.recovery_codes?.join('\n') || '') + '\n\n' + (res.message || 'All sessions were revoked; please sign in again.')
+                              );
+                              await SecureStore.deleteItemAsync('session');
+                              setToken('');
+                              setUser(null);
+                              setScan(null);
+                            })
+                          )}
+                          {button('Cancel', () => setShowRegenMfa(false), true)}
+                        </View>
+                      ) : (
+                        button('Regenerate Recovery Codes', () => setShowRegenMfa(true), true)
                       )}
                     </>
                   ) : enrollSecret ? (
