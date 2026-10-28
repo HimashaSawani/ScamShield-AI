@@ -165,3 +165,4 @@ Constructed an independent dataset of 1,502 benign deep-path URLs from authorita
 - **Security Posture:** All credentials, tokens, and database files excluded from Git. Zero hardcoded secrets. Strict tenant isolation on all API endpoints. PBKDF2 password hashing + SHA256 session and recovery code hashing. TOTP MFA required for staff.
 - **GitHub Ready:** **YES** (clean repository tree, verified `.gitignore`, full architecture documentation, test evidence files).
 - **LinkedIn / Portfolio Demo Ready:** **YES** (one-click demo mode on localhost with pre-seeded `demo@scamshield.test`, instant interactive scan analysis, full OCR upload flow, and transparent model explainability tab).
+
