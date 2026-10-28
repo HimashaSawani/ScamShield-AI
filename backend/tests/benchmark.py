@@ -11,7 +11,7 @@ from contextlib import closing
 from concurrent.futures import ThreadPoolExecutor
 
 def main():
-    with tempfile.TemporaryDirectory(prefix='scamshield-benchmark-') as tmp:
+    with tempfile.TemporaryDirectory(prefix='scamshield-benchmark-',ignore_cleanup_errors=True) as tmp:
         root=Path(tmp)
         os.environ['DATABASE_URL']='sqlite:///'+str(root/'benchmark.db')
         os.environ['STORAGE_PATH']=str(root/'storage')
