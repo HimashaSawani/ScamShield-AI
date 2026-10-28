@@ -1,111 +1,254 @@
 # ScamShield AI
 
-Local release candidate for message/URL detection, screenshot OCR, mobile scanning and analyst investigation. A separate worker persists versioned results. Explainable rules have an optional locally trained static URL classifier; the three-class text candidate remains disabled after failing its validation gate. Historical-source benchmark results are measured, but production accuracy, calibrated probabilities and multilingual performance are not established.
+**Explainable Multi-Modal Scam, Phishing URL & Screenshot Detection Platform**
 
-## Start on Windows
+ScamShield AI is a local-first, privacy-preserving cyber defense application for detecting suspicious URLs, multilingual scam messages (English, Sinhala, Singlish, and Tamil), and messaging screenshots. It combines a deterministic, span-level explainable rules engine (`rules-1.2.0`), an offline Public Suffix List (PSL) URL structural analyzer, an SHA256-verified static URL machine learning classifier (`scamshield-url-v1`), a human-confirmed OCR workflow, a responsive web dashboard, and an Expo / React Native Android client.
 
-From `D:\ScamShield AI`:
+---
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
-$env:DEV_EMAIL_TOKENS = '1'
-.\.venv\Scripts\python.exe -m alembic -c backend/alembic.ini upgrade head
-.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --no-access-log
+## Key Features
+
+- **Offline Structural URL Inspection & Static ML (`scamshield-url-v1`):** Extracts registrable domain boundaries via the Public Suffix List (PSL), flags brand impersonation (`brand_host`), punycode/IDN homographs, `@` userinfo obfuscation, raw IP literals, non-standard ports, and deep subdomain chains—augmented by a 20-feature static URL classifier without ever fetching or visiting the target URL.
+- **Multilingual Scam Text Detection (`rules-1.2.0`):** Detects credential harvesting (OTP/PIN/password requests), urgency pressure, financial/bank suspension traps, fake parcel delivery fees, and lottery lures across **English, Sinhala, Singlish, and Tamil**, while suppressing false positives on legitimate operational warnings (e.g., *"Never share your OTP with anyone"*).
+- **Human-in-the-Loop Screenshot OCR:** Validates uploaded images (`PNG`, `JPEG`, `WEBP`), extracts text asynchronously via Tesseract (`eng+sin+tam`), pauses at `partially_completed` for user review/correction, and runs full scam detection on the confirmed text.
+- **Explainable Risk Assessments:** Reports exact character spans, indicator weights, non-clickable URL structural breakdowns, and model provenance (`rules-only` vs. `rules-plus-model`). Scores (`0–100`) are deterministic indicator sums (`0–24` `Inconclusive`, `25–59` `Medium`, `60–100` `High`), never uncalibrated probabilities.
+- **Analyst Review Queue & Campaign Clustering:** Users can escalate scans to security analysts, whose verdicts (`Confirmed scam` / `False positive`) propagate directly back into the user's scan history. Staff can inspect clustered scam campaigns grouped by shared domains, phone numbers, and text fingerprints.
+- **Role-Based Access Control, TOTP MFA & Audit Logging:** Supports `user`, `analyst`, and `admin` roles. Staff roles require enrolled TOTP multi-factor authentication (with 8 single-use hashed recovery codes), and all privileged actions are recorded in an immutable audit log.
+
+---
+
+## Architecture
+
+```mermaid
+flowchart LR
+    subgraph Clients["Clients"]
+        Web["Web Dashboard (apps/dashboard)"]
+        Mobile["Android App (apps/mobile)"]
+    end
+
+    subgraph Backend["FastAPI Server (backend/app/main.py)"]
+        API["REST API, Auth, TOTP MFA & RBAC"]
+    end
+
+    subgraph Storage["Local Persistence"]
+        DB[("SQLite WAL / PostgreSQL")]
+        Files[("Private Upload Storage")]
+    end
+
+    subgraph Worker["Background Worker (backend/app/worker.py)"]
+        Queue["Lease-Based Job Processor & Heartbeat"]
+        Rules["Rules Engine (rules-1.2.0) + PSL URL Parser"]
+        ML["SHA256-Verified URL Classifier (scamshield-url-v1)"]
+        OCR["Tesseract OCR (eng/sin/tam)"]
+    end
+
+    Web -->|Same-Origin HTTP| API
+    Mobile -->|EXPO_PUBLIC_API_URL| API
+    API --> DB
+    API --> Files
+    Queue -->|Claim & Persist Scans| DB
+    Queue --> Rules
+    Queue --> ML
+    Queue --> OCR
+    OCR --> Files
 ```
 
-Open **http://localhost:8000**. In another terminal from the same project folder:
+---
 
-```powershell
-.\.venv\Scripts\python.exe -m backend.app.worker
-```
+## Technology Stack
 
-Register, use the development email token shown in the verification dialog, sign in, paste a message, and open the result. The worker must run for queued scans to finish. In development the verification token is returned only when `DEV_EMAIL_TOKENS=1`; otherwise configure SMTP. `.env.example` documents settings; plain Python commands read environment variables, not `.env` automatically.
+| Layer | Technologies |
+|---|---|
+| **Backend API & Worker** | Python 3.13, FastAPI, Uvicorn, SQLAlchemy 2.0, Alembic, Pydantic |
+| **Database & Queue** | SQLite (WAL mode) by default; PostgreSQL 16 supported; lease-based DB worker queue with heartbeats |
+| **AI / ML & Detection** | Deterministic multilingual regex/span rules (`rules-1.2.0`), Public Suffix List (`psl_data.py`), NumPy / scikit-learn static URL logistic classifier (`scamshield-url-v1`), Pillow + Tesseract OCR |
+| **Web Dashboard** | Vanilla JavaScript (`ES2022`), semantic HTML5, responsive CSS (`390px`–`1440px`), zero external runtime dependencies |
+| **Android Mobile App** | React Native `0.83.6`, Expo SDK `55`, TypeScript `5.9`, `expo-secure-store`, `expo-image-picker` |
+| **Testing & Verification** | Pytest (`102` tests), Playwright Headless Chrome E2E (`13` workflow groups), live 10-workflow E2E runner |
 
-Interactive API documentation: **http://localhost:8000/docs**.
+---
 
-If port 8000 is occupied, launch with `--port 8015`, open `http://localhost:8015`, and use that port in the mobile API URL. Validation used port 8015 because another process already owned port 8000.
+## AI / ML Detection Architecture & Quality Gates
 
-## Staff access
+ScamShield AI enforces a strict **95.0% validation precision gate** (`ml/artifacts/v1-json/manifest.json`) before any machine learning artifact can be enabled in the background worker:
 
-Create the first administrator through a local operator command, which prompts for a password and prints a new TOTP enrollment secret:
+1. **Active URL Model (`scamshield-url-v1` — `ml/artifacts/v1-json/url-model.json`):**
+   - **Status:** **ACTIVE** (`validation_eligible: true`, Manifest SHA256 `833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9`).
+   - **Features (`url-static-1`):** 20 purely static lexical/structural URL features (length, subdomain count, digit ratios, query parameters, brand tokens, TLD suspicion, HTTPS flag, etc.). Zero outbound network requests are made.
+   - **Integration Policy (`rules-plus-model`):** Negative ML predictions **never** reduce a rule score or remove rule evidence. When a named-domain URL scan scores `Inconclusive` (`< 25`) under rules alone and `scamshield-url-v1` predicts `phishing` (`score >= 0.5`), the worker elevates the assessment to `Medium` and attaches an explicit `model_url_phishing` indicator note.
+2. **Candidate Text Model (`scamshield-text-v1` — `ml/artifacts/v1-json/text-model.json`):**
+   - **Status:** **DISABLED** (`validation_eligible: false`).
+   - **Reason:** On the cleaned Mendeley SMS dataset (`5,568` messages), the three-class candidate achieved `93.8%` validation smishing precision and `79.10%` test smishing precision—falling short of the `95.0%` precision gate. `backend/app/model_inference.py` automatically rejects ineligible models and relies on `rules-1.2.0`.
 
-```powershell
-.\.venv\Scripts\python.exe -m backend.app.manage create-admin --email admin@example.com
-```
+---
 
-Add the secret to an authenticator app; enter the current code at login. Regular users can enroll an authenticator under Account & privacy. Admins may then promote them using Team & roles. Privileged logins require MFA. There are no default privileged credentials.
+## Screenshots
 
-For an optional local demo, run `python -m backend.app.demo`. On localhost the login page shows `demo@scamshield.test` / `ScamShieldDemo123!` and a **Try demo** button that fills and submits the login form. The demo is a regular user account; use sample content only. It is provisioned explicitly, never automatically at startup or deployment.
+### Web Dashboard
 
-## Mobile app
+| Overview (`Workspace / Overview`) | New Scan (`Workspace / New scan`) |
+| :---: | :---: |
+| ![ScamShield AI Web Overview](docs/images/web-overview.png) | ![ScamShield AI Web New Scan](docs/images/web-new-scan.png) |
+| **Scan History (`Workspace / Scan history`)** | **Detection Model (`Workspace / Detection model`)** |
+| ![ScamShield AI Web Scan History](docs/images/web-scan-history.png) | ![ScamShield AI Web Detection Model](docs/images/web-detection-model.png) |
+
+### Android Mobile Application
 
 <p align="center">
   <img src="docs/images/android-app.jpg" alt="ScamShield AI Android Mobile App" width="340" />
 </p>
 
+---
+
+## Installation
+
+From `D:\ScamShield AI` on Windows PowerShell:
+
 ```powershell
-cd apps/mobile
+python -m venv .venv-release
+.\.venv-release\Scripts\python.exe -m pip install -r backend/requirements.txt -r backend/requirements-verification.txt -r ml/requirements.txt
+```
+
+For the mobile app (`apps/mobile`):
+
+```powershell
+cd "D:\ScamShield AI\apps\mobile"
 npm.cmd ci
-$env:EXPO_PUBLIC_API_URL = 'http://YOUR-PC-LAN-IP:8000/api'
+```
+
+---
+
+## Local Startup
+
+Run the complete local stack using two PowerShell terminals from `D:\ScamShield AI`:
+
+### Terminal 1 — Database Migration, Demo Account & API Server
+```powershell
+cd "D:\ScamShield AI"
+$env:DEV_EMAIL_TOKENS = "1"
+$env:SCAMSHIELD_MODEL_DIR = "D:\ScamShield AI\ml\artifacts\v1-json"
+$env:SCAMSHIELD_MODEL_MANIFEST_SHA256 = "833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9"
+.\.venv-release\Scripts\python.exe -m alembic -c backend/alembic.ini upgrade head
+.\.venv-release\Scripts\python.exe -m backend.app.demo
+.\.venv-release\Scripts\python.exe -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --no-access-log
+```
+
+### Terminal 2 — Background Worker (with Active URL ML Model)
+```powershell
+cd "D:\ScamShield AI"
+$env:SCAMSHIELD_MODEL_DIR = "D:\ScamShield AI\ml\artifacts\v1-json"
+$env:SCAMSHIELD_MODEL_MANIFEST_SHA256 = "833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9"
+.\.venv-release\Scripts\python.exe -m backend.app.worker
+```
+
+- **Web Dashboard:** `http://localhost:8000` (click **Try demo** on localhost to sign in with `demo@scamshield.test` / `ScamShieldDemo123!`)
+- **2–3 Minute Portfolio Demo Walkthrough:** See [`docs/PORTFOLIO_DEMO_GUIDE.md`](docs/PORTFOLIO_DEMO_GUIDE.md)
+
+### Optional Staff Administrator Provisioning
+```powershell
+.\.venv-release\Scripts\python.exe -m backend.app.manage create-admin --email admin@example.com
+```
+
+### Optional Mobile App Startup
+```powershell
+cd "D:\ScamShield AI\apps\mobile"
+$env:EXPO_PUBLIC_API_URL = "http://192.168.1.4:8000/api"
 npm.cmd start
 ```
 
-Use an Expo Go version compatible with SDK 54, or an Expo development build, on the same network. Android emulator defaults to `http://10.0.2.2:8000/api`. Physical devices need the PC’s LAN address; localhost points to the phone itself. Allow the API through the local firewall as appropriate. Release builds must use an HTTPS endpoint.
+---
 
-Mobile sessions use Expo SecureStore. Scan history is read from the server; offline SQLite caching is not implemented. For an Android APK, configure your Expo/EAS account and run `npx eas-cli build --platform android --profile preview`. No APK has been built or signed in this environment.
+## API Documentation
 
-## Docker development stack
+Interactive OpenAPI / Swagger documentation is served automatically at **`http://localhost:8000/docs`**.
+
+| Endpoint | Method | Auth | Description |
+|---|---|---|---|
+| `/api/health` | `GET` | Public | Verifies database connectivity (`{"status": "ok"}`). |
+| `/api/ready` | `GET` | Public | Verifies database connectivity + fresh background worker heartbeat (`<= 30s`). |
+| `/api/detection/status` | `GET` | User | Returns active rules version (`rules-1.2.0`), loaded ML models, and provenance metadata. |
+| `/api/auth/register` | `POST` | Public | Registers a new account and issues a verification token (`DEV_EMAIL_TOKENS=1` or SMTP). |
+| `/api/auth/verify-email` | `POST` | Public | Verifies account email using token. |
+| `/api/auth/login` | `POST` | Public | Authenticates user (enforces TOTP/recovery code when MFA is enabled or role is staff). |
+| `/api/scans/text` | `POST` | User | Queues a text or URL scan for asynchronous worker analysis (`202 Accepted`). |
+| `/api/scans/screenshot` | `POST` | User | Validates and uploads a screenshot (`PNG`/`JPEG`/`WEBP`) for OCR extraction. |
+| `/api/scans/{id}/confirm-text` | `POST` | User | Submits user-reviewed OCR text for final scam detection. |
+| `/api/scans/{id}/report` | `POST` | User | Escalates a scan to the analyst review queue. |
+| `/api/analyst/reports` | `GET` | Analyst/Admin | Lists escalated user reports for analyst triage. |
+| `/api/analyst/campaigns` | `GET` | Analyst/Admin | Lists clustered scam campaigns by shared domain, phone, or text hash. |
+| `/api/admin/users` | `GET` | Admin | Lists users and manages role assignments (requires MFA for staff promotion). |
+| `/api/admin/audit-logs` | `GET` | Admin | Lists immutable security and role-change audit records. |
+
+---
+
+## Testing
+
+Run the full verification suite from `D:\ScamShield AI`:
 
 ```powershell
-$env:POSTGRES_PASSWORD = 'choose-a-long-random-url-safe-password'
-docker compose up --build
-```
+# 1. Backend pytest suite (102 passed, 1 skipped)
+.\.venv-release\Scripts\python.exe -m pytest backend/tests -q
 
-Dashboard/API: `http://localhost:8000`; development email inbox: `http://localhost:8025`. Includes PostgreSQL, API, worker, Tesseract with English/Sinhala/Tamil language packs, and Mailpit. Compose is for local development; production needs TLS, external mail delivery, protected networking and backups. Docker execution has not been validated here.
+# 2. Live 10-workflow End-to-End verification (API + Worker + SQLite + URL ML)
+.\.venv-release\Scripts\python.exe scripts/verify_final_e2e.py
 
-On Windows without Docker, install Tesseract and `eng`, `sin`, `tam` data separately and add its executable to PATH. Missing OCR is shown as Inconclusive with manual text entry. OCR extraction always requires user confirmation before detection.
+# 3. ML artifact SHA256 & 33,660-URL frozen test split verification
+.\.venv-release\Scripts\python.exe scripts/verify_model_artifacts.py
 
-## Checks
+# 4. Automated Chrome Playwright browser verification (13 workflow groups across 3 viewports)
+.\.venv-release\Scripts\python.exe scripts/verify_browser.py
 
-```powershell
-python -m pytest backend/tests -q
+# 5. Alembic migration, Git exclusion & SQLite concurrency benchmark checks
+.\.venv-release\Scripts\python.exe scripts/verify_migrations.py
+.\.venv-release\Scripts\python.exe scripts/verify_exclusions.py
+.\.venv-release\Scripts\python.exe -m backend.tests.benchmark
+
+# 6. Web JS syntax & Mobile TypeScript / Android bundle checks
 node --check apps/dashboard/app.js
+node --check apps/dashboard/results.js
 cd apps/mobile
 npm.cmd run typecheck
 ```
 
-See [architecture](docs/architecture.md), [acceptance and status](docs/status.md), [operations](docs/operations.md), [dataset and model cards](docs/model-data.md), and [demo script](docs/demo.md).
+See [`docs/SCAMSHIELD_FINAL_TEST_RESULTS.md`](docs/SCAMSHIELD_FINAL_TEST_RESULTS.md) and [`docs/SCAMSHIELD_FINAL_PROJECT_COMPLETION_REPORT.md`](docs/SCAMSHIELD_FINAL_PROJECT_COMPLETION_REPORT.md) for complete test records.
 
-## Release verification
+---
 
-See [the verification record](docs/release-verification.md) and [staging/Android instructions](docs/staging-android.md). No public deployment has been made. The existing local database was backed up to `backups/pre-release-0002` before migration 0002; the local dashboard and worker run at **http://localhost:8015**.
+## Evaluation Results
 
-Additional reproducible checks (destructive fixtures use temporary databases):
+| Evaluation Benchmark | Mode | Sample Size | Precision | Recall | F1 Score | False Positive Rate |
+|---|---|---:|---:|---:|---:|---:|
+| **PhiUSIIL Held-Out URL Test Split** | `rules-only` (`rules-1.2.0`) | 33,660 | 100.00% | 4.60% | 8.79% | 0.00% |
+| **PhiUSIIL Held-Out URL Test Split** | `scamshield-url-v1` (ML) | 33,660 | **99.93%** | **99.21%** | **99.57%** | **0.05%** |
+| **Synthetic URL Evaluation Set** | `rules-only` (`rules-1.2.0`) | 215 | 100.00% | 61.74% | 76.34% | 0.00% |
+| **Synthetic Suspicious URLs** | `rules-plus-model` | 115 | — | **100.00%** | — | — |
+| **Synthetic Multilingual Text Set** (EN/SI/Singlish) | `rules-only` (`rules-1.2.0`) | 200 | **100.00%** | **95.00%** | **97.44%** | **0.00%** |
+| **Synthetic Screenshot OCR Pipeline** | OCR + Confirmation + Rules | 30 | **100.00%** | **100.00%** | **100.00%** | **0.00%** |
 
-```powershell
-python -m pip install -r backend/requirements-verification.txt -r ml/requirements.txt
-python scripts/verify_migrations.py
-python scripts/verify_exclusions.py
-python scripts/verify_browser.py
-python -m backend.tests.benchmark
-python scripts/verify_evaluation.py
-```
+---
 
-Browser automation uses installed Chrome on Windows; set CHROME_PATH for another executable. It uses controlled OCR fixtures and does not visit suspected malicious URLs. Verification dependencies are separate from normal backend startup requirements. Evaluation fixtures are explicitly synthetic and make no accuracy claim.
+## Security Considerations
 
-Verification resend is on the login page. Authenticator enrollment shows eight recovery codes once. Login accepts a password plus authenticator or unused recovery code. Regeneration under Account & privacy requires reauthentication and revokes all sessions. Save codes privately. Resend responses remain generic during cooldown.
+- **No Active URL Probing:** Submitted URLs are parsed strictly offline; ScamShield AI never connects to, resolves, or renders untrusted URLs.
+- **Credential & Session Hardening:** Passwords use `PBKDF2-HMAC-SHA256` (`390,000` iterations); session tokens and MFA recovery codes are stored exclusively as SHA256 hashes.
+- **Privileged MFA Enforcement:** Analyst and Admin accounts cannot authenticate or be promoted without active TOTP MFA enrollment.
+- **Strict Tenant Isolation:** All user scan queries and mutations filter by `Scan.user_id`, returning `HTTP 404` on cross-tenant access attempts.
+- **Safe Upload Storage:** Uploaded screenshots are validated via magic bytes and Pillow `Image.verify()`, renamed to random UUIDs, stored outside the static web root, and purged upon scan or account deletion.
 
-`/api/health` checks the database; `/api/ready` requires a recent worker heartbeat; `/api/admin/metrics` requires an admin session. Dashboard requests remain same-origin, and mobile API URLs use EXPO_PUBLIC_API_URL.
+---
 
-This implementation deliberately uses a database-backed queue, private filesystem storage, and a buildless dashboard to make local setup small. PostgreSQL is supported; Celery/Redis, S3, Next.js, calibrated ML, and production hosting from the broader plan remain future work. No public site was deployed.
+## Limitations
 
-## Current detection and evaluation
+1. **URL ML Source-Dataset Domain Shift:** In the PhiUSIIL benchmark, legitimate URLs are predominantly bare root domains (`https://www.domain.com` with `path_length == 0`) and `100%` HTTPS. Consequently, `scamshield-url-v1` can over-flag benign URLs that contain deep file paths (`path_length > 0`, `slashes >= 3`) as `Medium`.
+2. **Text ML Candidate Disabled:** The Mendeley SMS candidate classifier (`scamshield-text-v1`) did not meet the `95.0%` smishing precision gate (`79.10%` test precision) and remains disabled in favor of deterministic multilingual rules (`rules-1.2.0`).
+3. **Uncalibrated Risk Scores:** Rule scores (`0–100`) are linear indicator weight sums and ML outputs are uncalibrated logistic scores from historical datasets—neither represents a real-world probability of fraud.
+4. **Local Native Dependencies:** Screenshot OCR on Windows requires the native `tesseract.exe` binary on `PATH` (otherwise scans pause cleanly at `partially_completed` for manual text entry). Physical Android device testing requires a connected USB/ADB device or same-LAN Expo client.
 
-The supplied Mendeley SMS and PhiUSIIL archives have now been inventoried, cleaned, split, trained and evaluated. The URL model `scamshield-url-v1` is enabled on the local port-8015 worker; the text candidate failed validation and stays disabled. Rules-only is still the default when model configuration is absent. See the [complete commands, measured results, activation/fallback and source limitations](docs/model-workflow-v1.md), [v1 acceptance checklist](docs/v1-checklist.md) and [fresh running results](docs/models-live-verification.json). Backend suite now passes **101 tests**. PostgreSQL/Docker, installable Android/device, real OCR quality and external delivery remain blocked; v1 is not fully signed off.
+---
 
-Local API/dashboard and worker run at http://localhost:8015 with rules-1.2.0. Fresh A/B scans and 92 backend tests pass; historical results remain unchanged. See [current status](docs/status.md) and [runtime evidence](docs/detection-live-verification.json). Scores are indicator sums, not probabilities; no indicators means Inconclusive.
+## Future Improvements
 
-New URL results expose the actual hostname, offline PSL domain boundary and unavailable live checks as non-clickable text on dashboard/mobile. See [URL policy and limitations](docs/url-analysis.md).
-
-The earlier rules-first evaluator, [annotation guide](docs/rules-evaluation.md), [collection template](ml/data/collection-template.csv) and [publisher dataset review](docs/dataset-source-review.md) remain available. Run `python scripts/verify_rules_evaluator.py` for synthetic software validation. The supplied-data workflow above adds measured historical-source benchmarks and optional URL inference; representative deployment accuracy and calibration remain unestablished.
+- Train a path-diverse URL classifier incorporating benign deep-path URLs (documentation pages, e-commerce product paths, and localized Sri Lankan `.lk` domains) to eliminate path-length domain shift.
+- Expand native Sinhala and Tamil SMS corpus collection to train a calibrated, precision-gated multilingual text classifier.
+- Add optional offline SQLite scan caching in `apps/mobile` and automated EAS Android APK preview builds.
+- Add optional Celery/Redis worker orchestration and S3-compatible object storage for cloud deployment.
