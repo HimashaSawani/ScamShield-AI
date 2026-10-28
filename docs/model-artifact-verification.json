@@ -6,8 +6,8 @@
   "frozen_url_test_count": 33660,
   "production_json_confusion_matrix_matches_training_estimator": true,
   "latency_ms_including_production_url_features": {
-    "median": 2.7533500106073916,
-    "p95": 3.966600022977218,
+    "median": 0.9444000024814159,
+    "p95": 1.4893999905325472,
     "samples": 100
   },
   "no_urls_fetched": true

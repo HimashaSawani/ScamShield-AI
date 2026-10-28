@@ -72,17 +72,20 @@ flowchart LR
 
 ScamShield AI enforces a strict **95.0% validation precision gate** (`ml/artifacts/v1-json/manifest.json`) before any machine learning artifact can be enabled in the background worker:
 
-1. **Active URL Model (`scamshield-url-v1` — `ml/artifacts/v1-json/url-model.json`):**
-   - **Status:** **ACTIVE** (`validation_eligible: true`, Manifest SHA256 `833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9`).
-   - **Features (`url-static-1`):** 20 purely static lexical/structural URL features (length, subdomain count, digit ratios, query parameters, brand tokens, TLD suspicion, HTTPS flag, etc.). Zero outbound network requests are made.
-   - **Integration Policy (`rules-plus-model`):** Negative ML predictions **never** reduce a rule score or remove rule evidence. When a named-domain URL scan scores `Inconclusive` (`< 25`) under rules alone and `scamshield-url-v1` predicts `phishing` (`score >= 0.5`), the worker elevates the assessment to `Medium` and attaches an explicit `model_url_phishing` indicator note.
-2. **Candidate Text Model (`scamshield-text-v1` — `ml/artifacts/v1-json/text-model.json`):**
+1. **Active Released URL Model (`scamshield-url-v2` — `ml/artifacts/v2-json/url-model.json`):**
+   - **Status:** **PROMOTED TO PRODUCTION / ACTIVE** (`validation_eligible: true`, Manifest SHA256 `b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606`).
+   - **Quality Gate Results:**
+     - **Validation Precision:** **97.62%** (Gate $\ge 95.0\%$ — **PASS**)
+     - **Validation Recall:** **88.25%** (Gate $\ge 70.0\%$ — **PASS**)
+     - **Validation FPR:** **1.68%** (Gate $\le 2.0\%$ — **PASS**)
+   - **Path Bias Resolution:** Feature schema upgraded to **`url-static-2`** (28 static features isolating host/subdomain signals from path tokens). Benign deep-path false positives dropped from **80.0% (20/25) down to 12.0% (3/25)** on the 25-case stress benchmark while maintaining **99.94% precision and 91.30% recall** on the untouched 33,660 PhiUSIIL test split.
+   - **Integration Policy (`rules-plus-model`):** Negative ML predictions **never** reduce a rule score or remove rule evidence. When a named-domain URL scan scores `Inconclusive` under rules alone and `scamshield-url-v2` predicts `phishing`, the worker elevates the assessment to `Medium` and attaches an explicit indicator note.
+2. **Prior Version for Rollback (`scamshield-url-v1` — `ml/artifacts/v1-json/url-model.json`):**
+   - **Status:** **VERIFIED ROLLBACK TARGET** (`validation_eligible: true`, Manifest SHA256 `833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9`).
+   - Retained on disk and supported transparently by multi-schema backend loader (`url-static-1`).
+3. **Candidate Text Model (`scamshield-text-v1` — `ml/artifacts/v2-json/text-model.json`):**
    - **Status:** **DISABLED** (`validation_eligible: false`).
    - **Reason:** On the cleaned Mendeley SMS dataset (`5,568` messages), the three-class candidate achieved `93.8%` validation smishing precision and `79.10%` test smishing precision—falling short of the `95.0%` precision gate. `backend/app/model_inference.py` automatically rejects ineligible models and relies on `rules-1.2.0`.
-3. **Candidate URL Model v2 (`scamshield-url-v2` — `ml/artifacts/v2-json/url-model.json`):**
-   - **Status:** **EXPERIMENTAL / CANDIDATE ARCHIVED** (`docs/url_candidate_v2_comparison.json`).
-   - **Investigation & Improvements:** Trained on domain-grouped benign deep paths (`ml/data/benign_deep_paths.json`). Dropped benign deep-path false positives on the 25-case stress set from `80.0%` down to `16.0%` while retaining `100.0%` phishing recall on synthetic suspicious URLs.
-   - **Quality Gate Outcome:** Peak validation precision reached `93.90%` (at thr=0.85) / `94.60%` (at thr=0.90) and FPR reached `4.66%`–`5.41%`. Because precision fell below the mandatory `>= 95.0%` gate, candidate v2 was preserved as an experimental artifact while `scamshield-url-v1` remains the released model. Operators seeking zero path false positives can run in `rules-only` mode (`SCAMSHIELD_MODEL_DIR=""`).
 
 ---
 
@@ -130,18 +133,18 @@ Run the complete local stack using two PowerShell terminals from `D:\ScamShield 
 ```powershell
 cd "D:\ScamShield AI"
 $env:DEV_EMAIL_TOKENS = "1"
-$env:SCAMSHIELD_MODEL_DIR = "D:\ScamShield AI\ml\artifacts\v1-json"
-$env:SCAMSHIELD_MODEL_MANIFEST_SHA256 = "833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9"
+$env:SCAMSHIELD_MODEL_DIR = "D:\ScamShield AI\ml\artifacts\v2-json"
+$env:SCAMSHIELD_MODEL_MANIFEST_SHA256 = "b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606"
 .\.venv-release\Scripts\python.exe -m alembic -c backend/alembic.ini upgrade head
 .\.venv-release\Scripts\python.exe -m backend.app.demo
 .\.venv-release\Scripts\python.exe -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --no-access-log
 ```
 
-### Terminal 2 — Background Worker (with Active URL ML Model)
+### Terminal 2 — Background Worker (with Active URL ML Model v2)
 ```powershell
 cd "D:\ScamShield AI"
-$env:SCAMSHIELD_MODEL_DIR = "D:\ScamShield AI\ml\artifacts\v1-json"
-$env:SCAMSHIELD_MODEL_MANIFEST_SHA256 = "833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9"
+$env:SCAMSHIELD_MODEL_DIR = "D:\ScamShield AI\ml\artifacts\v2-json"
+$env:SCAMSHIELD_MODEL_MANIFEST_SHA256 = "b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606"
 .\.venv-release\Scripts\python.exe -m backend.app.worker
 ```
 

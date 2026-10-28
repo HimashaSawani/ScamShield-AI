@@ -24,8 +24,8 @@ services:
       SMTP_FROM: scamshield@localhost
       RETENTION_DAYS: 90
       OCR_LANGUAGES: eng+sin+tam
-      SCAMSHIELD_MODEL_DIR: /srv/ml/artifacts/v1-json
-      SCAMSHIELD_MODEL_MANIFEST_SHA256: 833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9
+      SCAMSHIELD_MODEL_DIR: /srv/ml/artifacts/v2-json
+      SCAMSHIELD_MODEL_MANIFEST_SHA256: b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606
     volumes:
       - screenshots:/data
     ports:

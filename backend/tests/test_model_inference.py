@@ -107,3 +107,36 @@ def test_released_url_model_bundle_and_worker_inference(monkeypatch):
     legit_res=enrich(analyze(legit,'url'),legit,'url')
     assert legit_res['assessment']=='Inconclusive' and legit_res['score']==0
     assert legit_res['models'][0]['prediction']=='legitimate'
+
+def test_v2_url_model_bundle_and_worker_inference(monkeypatch):
+    from pathlib import Path
+    from backend.app.model_inference import model_status
+    bundle=Path(__file__).resolve().parents[2]/'ml'/'artifacts'/'v2-json'
+    if not (bundle/'manifest.json').is_file():
+        pytest.skip('v2-json model bundle not present')
+    expected_pin='b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606'
+    assert hashlib.sha256((bundle/'manifest.json').read_bytes()).hexdigest()==expected_pin
+    monkeypatch.setenv('SCAMSHIELD_MODEL_DIR',str(bundle))
+    monkeypatch.setenv('SCAMSHIELD_MODEL_MANIFEST_SHA256',expected_pin)
+    load_bundle.cache_clear()
+    models=load_bundle(str(bundle),expected_pin)
+    assert list(models.keys())==['url']
+    assert 'text' not in models
+    assert models['url']['version']=='scamshield-url-v2'
+    assert models['url']['feature_schema']=='url-static-2'
+    assert len(models['url']['url_features'])==28
+    status=model_status()
+    assert status['mode']=='rules-plus-model'
+    assert status['enabled']==[{'kind':'url','version':'scamshield-url-v2'}]
+    # Phishing link elevated to Medium
+    phish_url='https://apple-verify.example.com/login'
+    combined=enrich(analyze(phish_url,'url'),phish_url,'url')
+    assert combined['assessment']=='Medium'
+    assert combined['model_mode']=='rules-plus-model'
+    assert combined['models'][0]['version']=='scamshield-url-v2'
+    assert combined['models'][0]['prediction']=='phishing'
+    # Legitimate deep path URL remains Inconclusive (addressing path bias)
+    deep_path='https://docs.python.org/3/library/sqlite3.html'
+    deep_res=enrich(analyze(deep_path,'url'),deep_path,'url')
+    assert deep_res['assessment']=='Inconclusive'
+    assert deep_res['models'][0]['prediction']=='legitimate'
