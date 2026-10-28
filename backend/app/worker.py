@@ -62,8 +62,15 @@ def process_one():
             if job.kind == 'screenshot' and not job.text:
                 import pytesseract
                 tess_cmd = os.getenv('TESSERACT_CMD')
+                if not tess_cmd:
+                    local_bin = Path(__file__).resolve().parents[2] / 'tools' / 'tesseract' / 'bin' / 'tesseract.exe'
+                    if local_bin.is_file():
+                        tess_cmd = str(local_bin)
                 if tess_cmd and Path(tess_cmd).is_file():
                     pytesseract.pytesseract.tesseract_cmd = tess_cmd
+                    local_tessdata = Path(tess_cmd).parents[1] / 'tessdata'
+                    if local_tessdata.is_dir() and 'TESSDATA_PREFIX' not in os.environ:
+                        os.environ['TESSDATA_PREFIX'] = str(local_tessdata)
                 try:
                     with Image.open(STORAGE / job.attachment) as image:
                         image = ImageOps.grayscale(ImageOps.exif_transpose(image))
