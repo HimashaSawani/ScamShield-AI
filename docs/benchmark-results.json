@@ -12,12 +12,12 @@
   "worker_threads": 2,
   "http_failures": 0,
   "completed_scans": 40,
-  "elapsed_seconds": 2.34,
-  "scans_per_second": 17.096,
+  "elapsed_seconds": 2.378,
+  "scans_per_second": 16.824,
   "request_latency_ms": {
-    "median": 153.077,
-    "p95": 322.6,
-    "max": 1823.552
+    "median": 114.149,
+    "p95": 753.455,
+    "max": 836.838
   },
   "restore": {
     "restored_attachments": 1,
