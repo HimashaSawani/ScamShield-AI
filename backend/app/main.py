@@ -262,11 +262,11 @@ async def screenshot(file: UploadFile = File(...), user=Depends(current), db=Dep
     if len(data) > 5*1024*1024:
         raise HTTPException(413, 'Image exceeds 5 MB')
     suffix = Path(file.filename or '').suffix.lower()
-    if suffix not in ['.png', '.jpg', '.jpeg'] or file.content_type not in ['image/png', 'image/jpeg']:
-        raise HTTPException(415, 'Upload a PNG or JPEG screenshot')
+    if suffix not in ['.png', '.jpg', '.jpeg', '.webp'] or file.content_type not in ['image/png', 'image/jpeg', 'image/webp']:
+        raise HTTPException(415, 'Upload a PNG, JPEG or WEBP screenshot')
     try:
         with Image.open(io.BytesIO(data)) as image:
-            expected = 'PNG' if suffix == '.png' else 'JPEG'
+            expected = 'PNG' if suffix == '.png' else ('WEBP' if suffix == '.webp' else 'JPEG')
             if image.format != expected or image.width*image.height > 16000000 or min(image.size) < 20:
                 raise ValueError()
             image.verify()

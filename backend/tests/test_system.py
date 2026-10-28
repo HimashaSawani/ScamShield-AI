@@ -112,6 +112,11 @@ def test_upload_validation_and_manual_ocr_fallback(monkeypatch):
     assert client.post('/api/scans/screenshot',headers=a,files={'file':('a.png',b'a'*(5*1024*1024+1),'image/png')}).status_code==413
     data=io.BytesIO();Image.new('RGB',(50,50),'white').save(data,'PNG')
     assert client.post('/api/scans/screenshot',headers=a,files={'file':('a.jpg',data.getvalue(),'image/jpeg')}).status_code==422
+    # Verify WEBP upload support
+    webp_data=io.BytesIO();Image.new('RGB',(50,50),'white').save(webp_data,'WEBP')
+    rw=client.post('/api/scans/screenshot',headers=a,files={'file':('a.webp',webp_data.getvalue(),'image/webp')})
+    assert rw.status_code==202
+    client.delete('/api/scans/'+rw.json()['id'],headers=a)
     r=client.post('/api/scans/screenshot',headers=a,files={'file':('a.png',data.getvalue(),'image/png')})
     assert r.status_code==202,r.text
     sid=r.json()['id']

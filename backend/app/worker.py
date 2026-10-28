@@ -61,6 +61,9 @@ def process_one():
         try:
             if job.kind == 'screenshot' and not job.text:
                 import pytesseract
+                tess_cmd = os.getenv('TESSERACT_CMD')
+                if tess_cmd and Path(tess_cmd).is_file():
+                    pytesseract.pytesseract.tesseract_cmd = tess_cmd
                 try:
                     with Image.open(STORAGE / job.attachment) as image:
                         image = ImageOps.grayscale(ImageOps.exif_transpose(image))

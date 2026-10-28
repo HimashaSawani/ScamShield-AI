@@ -1,5 +1,5 @@
 {
-  "executed_at": "2026-10-28T02:53:49Z",
+  "executed_at": "2026-10-28T03:26:39Z",
   "all_passed": true,
   "workflow_count": 10,
   "workflows": {
@@ -17,7 +17,7 @@
     "B_suspicious_url_scan": {
       "status": "PASS",
       "evidence": {
-        "scan_id": "3efaca22fe96e3401189f48e5218d87d",
+        "scan_id": "0ae1e3dfb5a93b40bdca09d9ec170ec0",
         "assessment": "Medium",
         "score": 30,
         "model_mode": "rules-plus-model",
@@ -40,7 +40,7 @@
     "C_benign_url_scan": {
       "status": "PASS",
       "evidence": {
-        "scan_id": "09423d6118bb0abdd6d573c9230debd1",
+        "scan_id": "4654228594ec181f88885b08036fcf8d",
         "assessment": "Inconclusive",
         "score": 0,
         "model_prediction": "legitimate"
@@ -49,7 +49,7 @@
     "D_suspicious_message_scan": {
       "status": "PASS",
       "evidence": {
-        "scan_id": "f1e10f41bb0c76fcf67cb4c1909498d2",
+        "scan_id": "3fc80254561384868fa8b924a4adc1fa",
         "assessment": "High",
         "score": 65,
         "evidence_codes": [
@@ -61,7 +61,7 @@
     "E_benign_message_scan": {
       "status": "PASS",
       "evidence": {
-        "scan_id": "916562bdf6f3adc56e5dace0b311ae88",
+        "scan_id": "6657388b9af50950eee06f22f4e0ed09",
         "assessment": "Inconclusive",
         "score": 0,
         "evidence_count": 0
@@ -71,7 +71,7 @@
       "status": "PASS",
       "evidence": {
         "invalid_image_http": 422,
-        "scan_id": "7ad126b92a84f74d422bc9fdb01e6a33",
+        "scan_id": "9816294d27d9ef32dff3048b91e1272b",
         "ocr_stage_status": "partially_completed",
         "final_status": "completed",
         "final_assessment": "High",
@@ -88,7 +88,7 @@
     "G_analyst_review_verdict_in_history": {
       "status": "PASS",
       "evidence": {
-        "report_id": "9b567cbd943e90aeff8d297911d09b2d",
+        "report_id": "cd1e622c9addb66c4143fa8b1d0b4549",
         "queue_http": 200,
         "decision_http": 200,
         "user_history_verdict": "Confirmed scam"
@@ -97,7 +97,7 @@
     "I_worker_interruption_and_recovery": {
       "status": "PASS",
       "evidence": {
-        "scan_id": "f4564e74aeab58d9c53782b0e93a3306",
+        "scan_id": "da638885c04b455ba95a03ce749f6acc",
         "recovered_from_stale_lease": true,
         "final_status": "completed",
         "final_assessment": "High"
