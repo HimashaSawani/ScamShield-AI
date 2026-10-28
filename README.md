@@ -10,7 +10,7 @@ ScamShield AI is a local-first, privacy-preserving cyber defense application for
 
 - **Offline Structural URL Inspection & Static ML (`scamshield-url-v1`):** Extracts registrable domain boundaries via the Public Suffix List (PSL), flags brand impersonation (`brand_host`), punycode/IDN homographs, `@` userinfo obfuscation, raw IP literals, non-standard ports, and deep subdomain chains—augmented by a 20-feature static URL classifier without ever fetching or visiting the target URL.
 - **Multilingual Scam Text Detection (`rules-1.2.0`):** Detects credential harvesting (OTP/PIN/password requests), urgency pressure, financial/bank suspension traps, fake parcel delivery fees, and lottery lures across **English, Sinhala, Singlish, and Tamil**, while suppressing false positives on legitimate operational warnings (e.g., *"Never share your OTP with anyone"*).
-- **Human-in-the-Loop Screenshot OCR:** Validates uploaded images (`PNG`, `JPEG`, `WEBP`), extracts text asynchronously via Tesseract (`eng+sin+tam`), pauses at `partially_completed` for user review/correction, and runs full scam detection on the confirmed text.
+- **Human-in-the-Loop Screenshot OCR:** Validates uploaded images (`PNG`, `JPEG`, `WEBP`), extracts text asynchronously via bundled portable Tesseract 5.5.3 (`eng+sin+tam+osd`), pauses at `awaiting_confirmation` for user review/correction, and runs full scam detection on the confirmed text.
 - **Explainable Risk Assessments:** Reports exact character spans, indicator weights, non-clickable URL structural breakdowns, and model provenance (`rules-only` vs. `rules-plus-model`). Scores (`0–100`) are deterministic indicator sums (`0–24` `Inconclusive`, `25–59` `Medium`, `60–100` `High`), never uncalibrated probabilities.
 - **Analyst Review Queue & Campaign Clustering:** Users can escalate scans to security analysts, whose verdicts (`Confirmed scam` / `False positive`) propagate directly back into the user's scan history. Staff can inspect clustered scam campaigns grouped by shared domains, phone numbers, and text fingerprints.
 - **Role-Based Access Control, TOTP MFA & Audit Logging:** Supports `user`, `analyst`, and `admin` roles. Staff roles require enrolled TOTP multi-factor authentication (with 8 single-use hashed recovery codes), and all privileged actions are recorded in an immutable audit log.
@@ -79,6 +79,10 @@ ScamShield AI enforces a strict **95.0% validation precision gate** (`ml/artifac
 2. **Candidate Text Model (`scamshield-text-v1` — `ml/artifacts/v1-json/text-model.json`):**
    - **Status:** **DISABLED** (`validation_eligible: false`).
    - **Reason:** On the cleaned Mendeley SMS dataset (`5,568` messages), the three-class candidate achieved `93.8%` validation smishing precision and `79.10%` test smishing precision—falling short of the `95.0%` precision gate. `backend/app/model_inference.py` automatically rejects ineligible models and relies on `rules-1.2.0`.
+3. **Candidate URL Model v2 (`scamshield-url-v2` — `ml/artifacts/v2-json/url-model.json`):**
+   - **Status:** **EXPERIMENTAL / CANDIDATE ARCHIVED** (`docs/url_candidate_v2_comparison.json`).
+   - **Investigation & Improvements:** Trained on domain-grouped benign deep paths (`ml/data/benign_deep_paths.json`). Dropped benign deep-path false positives on the 25-case stress set from `80.0%` down to `16.0%` while retaining `100.0%` phishing recall on synthetic suspicious URLs.
+   - **Quality Gate Outcome:** Peak validation precision reached `93.90%` (at thr=0.85) / `94.60%` (at thr=0.90) and FPR reached `4.66%`–`5.41%`. Because precision fell below the mandatory `>= 95.0%` gate, candidate v2 was preserved as an experimental artifact while `scamshield-url-v1` remains the released model. Operators seeking zero path false positives can run in `rules-only` mode (`SCAMSHIELD_MODEL_DIR=""`).
 
 ---
 
@@ -242,7 +246,7 @@ See [`docs/SCAMSHIELD_FINAL_TEST_RESULTS.md`](docs/SCAMSHIELD_FINAL_TEST_RESULTS
 1. **URL ML Source-Dataset Domain Shift:** In the PhiUSIIL benchmark, legitimate URLs are predominantly bare root domains (`https://www.domain.com` with `path_length == 0`) and `100%` HTTPS. Consequently, `scamshield-url-v1` can over-flag benign URLs that contain deep file paths (`path_length > 0`, `slashes >= 3`) as `Medium`.
 2. **Text ML Candidate Disabled:** The Mendeley SMS candidate classifier (`scamshield-text-v1`) did not meet the `95.0%` smishing precision gate (`79.10%` test precision) and remains disabled in favor of deterministic multilingual rules (`rules-1.2.0`).
 3. **Uncalibrated Risk Scores:** Rule scores (`0–100`) are linear indicator weight sums and ML outputs are uncalibrated logistic scores from historical datasets—neither represents a real-world probability of fraud.
-4. **Local Native Dependencies:** Screenshot OCR on Windows requires the native `tesseract.exe` binary on `PATH` (otherwise scans pause cleanly at `partially_completed` for manual text entry). Physical Android device testing requires a connected USB/ADB device or same-LAN Expo client.
+4. **Local Native Dependencies:** Screenshot OCR is bundled with standalone Tesseract 5.5.3 in `tools/tesseract` and auto-detected by the background worker. If run in an environment without Tesseract, scans pause cleanly at `partially_completed` for manual text entry. Physical Android device testing requires a connected USB/ADB device or same-LAN Expo client.
 
 ---
 
