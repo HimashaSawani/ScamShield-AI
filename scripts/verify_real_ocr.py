@@ -28,6 +28,7 @@ def check_tesseract_environment():
     # Check common Windows paths if not found on PATH
     if not cmd:
         candidates = [
+            str(ROOT / 'tools' / 'tesseract' / 'bin' / 'tesseract.exe'),
             r"C:\Program Files\Tesseract-OCR\tesseract.exe",
             r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
             os.path.expandvars(r"%LOCALAPPDATA%\Programs\Tesseract-OCR\tesseract.exe"),
@@ -51,10 +52,17 @@ def check_tesseract_environment():
     
     if cmd:
         try:
-            v_res = subprocess.run([cmd, '--version'], capture_output=True, text=True, timeout=10)
+            tess_env = {**os.environ}
+            local_tessdata = Path(cmd).parents[1] / 'tessdata'
+            if local_tessdata.is_dir():
+                tess_env['TESSDATA_PREFIX'] = str(local_tessdata)
+                os.environ['TESSDATA_PREFIX'] = str(local_tessdata)
+            os.environ['TESSERACT_CMD'] = cmd
+            
+            v_res = subprocess.run([cmd, '--version'], capture_output=True, text=True, timeout=10, env=tess_env)
             info['version'] = v_res.stdout.splitlines()[0] if v_res.stdout else None
             
-            l_res = subprocess.run([cmd, '--list-langs'], capture_output=True, text=True, timeout=10)
+            l_res = subprocess.run([cmd, '--list-langs'], capture_output=True, text=True, timeout=10, env=tess_env)
             langs = [line.strip() for line in l_res.stdout.splitlines() if line.strip() and not line.startswith('List of')]
             info['languages'] = langs
             info['has_eng'] = 'eng' in langs
