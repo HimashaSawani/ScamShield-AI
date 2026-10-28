@@ -1,0 +1,5218 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Safe synthetic test fixtures for ScamShield AI verification",
+    "counts": {
+      "suspicious_urls": 115,
+      "benign_urls": 100,
+      "scam_texts": 100,
+      "benign_texts": 100,
+      "edge_cases": 30,
+      "total": 445
+    }
+  },
+  "suspicious_urls": [
+    {
+      "id": "SURL_001",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://paypal-login.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: paypal-login"
+    },
+    {
+      "id": "SURL_002",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://apple-verify.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: apple-verify"
+    },
+    {
+      "id": "SURL_003",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://microsoft-security.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: microsoft-security"
+    },
+    {
+      "id": "SURL_004",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://chase-bank-secure.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: chase-bank-secure"
+    },
+    {
+      "id": "SURL_005",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://netflix-account-update.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: netflix-account-update"
+    },
+    {
+      "id": "SURL_006",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://amazon-auth.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: amazon-auth"
+    },
+    {
+      "id": "SURL_007",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://google-signin.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: google-signin"
+    },
+    {
+      "id": "SURL_008",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://hsbc-bank-confirm-identity.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: hsbc-bank-confirm-identity"
+    },
+    {
+      "id": "SURL_009",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://wellsfargo-session-renew.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: wellsfargo-session-renew"
+    },
+    {
+      "id": "SURL_010",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://bankofceylon-alert.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: bankofceylon-alert"
+    },
+    {
+      "id": "SURL_011",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://dialog-telecom-login.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: dialog-telecom-login"
+    },
+    {
+      "id": "SURL_012",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://peoplesbank-verify.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: peoplesbank-verify"
+    },
+    {
+      "id": "SURL_013",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://commercialbank-security.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: commercialbank-security"
+    },
+    {
+      "id": "SURL_014",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://ebay-secure.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: ebay-secure"
+    },
+    {
+      "id": "SURL_015",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://meta-account-update.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: meta-account-update"
+    },
+    {
+      "id": "SURL_016",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://paypal-auth.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: paypal-auth"
+    },
+    {
+      "id": "SURL_017",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://apple-signin.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: apple-signin"
+    },
+    {
+      "id": "SURL_018",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://microsoft-confirm-identity.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: microsoft-confirm-identity"
+    },
+    {
+      "id": "SURL_019",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://chase-bank-session-renew.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: chase-bank-session-renew"
+    },
+    {
+      "id": "SURL_020",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://netflix-alert.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: netflix-alert"
+    },
+    {
+      "id": "SURL_021",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://amazon-login.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: amazon-login"
+    },
+    {
+      "id": "SURL_022",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://google-verify.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: google-verify"
+    },
+    {
+      "id": "SURL_023",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://hsbc-bank-security.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: hsbc-bank-security"
+    },
+    {
+      "id": "SURL_024",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "https://wellsfargo-secure.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: wellsfargo-secure"
+    },
+    {
+      "id": "SURL_025",
+      "category": "suspicious_url",
+      "subcategory": "brand_impersonation",
+      "url": "http://bankofceylon-account-update.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand impersonation with action keyword in host: bankofceylon-account-update"
+    },
+    {
+      "id": "SURL_026",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-1.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_027",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-2.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_028",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-3.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_029",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-4.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_030",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-5.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_031",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-6.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_032",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-7.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_033",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-8.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_034",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-9.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_035",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-10.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_036",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-11.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_037",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-12.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_038",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-13.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_039",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-14.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_040",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-15.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_041",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-16.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_042",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-17.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_043",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-18.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_044",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-19.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_045",
+      "category": "suspicious_url",
+      "subcategory": "login_verification",
+      "url": "http://bank-login-verify-20.example.com/portal/signin",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank brand with login/verify action terms in hostname over HTTP"
+    },
+    {
+      "id": "SURL_046",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-1.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_047",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-2.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_048",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-3.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_049",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-4.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_050",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-5.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_051",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-6.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_052",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-7.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_053",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-8.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_054",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-9.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_055",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-10.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_056",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-11.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_057",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-12.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_058",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-13.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_059",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-14.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_060",
+      "category": "suspicious_url",
+      "subcategory": "account_suspension",
+      "url": "http://paypal-unblock-secure-15.example.org/account/restore",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Account unblock/security keywords targeting financial brand over HTTP"
+    },
+    {
+      "id": "SURL_061",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-1.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_062",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-2.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_063",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-3.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_064",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-4.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_065",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-5.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_066",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-6.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_067",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-7.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_068",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-8.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_069",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-9.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_070",
+      "category": "suspicious_url",
+      "subcategory": "prize_giveaway",
+      "url": "http://apple-reward-claim-10.sample.net/prize/redeem",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Prize reward claim with brand keyword over HTTP"
+    },
+    {
+      "id": "SURL_071",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-1.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_072",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-2.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_073",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-3.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_074",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-4.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_075",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-5.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_076",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-6.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_077",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-7.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_078",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-8.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_079",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-9.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_080",
+      "category": "suspicious_url",
+      "subcategory": "delivery_fee",
+      "url": "http://express-postal-delivery-10.example.com/fee/release",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Unencrypted HTTP delivery fee release link"
+    },
+    {
+      "id": "SURL_081",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-1.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_082",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-2.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_083",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-3.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_084",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-4.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_085",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-5.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_086",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-6.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_087",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-7.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_088",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-8.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_089",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-9.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_090",
+      "category": "suspicious_url",
+      "subcategory": "payment_verification",
+      "url": "http://bank-secure-payment-10.example.com/verify-transfer",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Bank security payment verification pattern over HTTP"
+    },
+    {
+      "id": "SURL_091",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-1.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_092",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-2.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_093",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-3.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_094",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-4.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_095",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-5.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_096",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-6.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_097",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-7.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_098",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-8.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_099",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-9.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_100",
+      "category": "suspicious_url",
+      "subcategory": "excessive_subdomains",
+      "url": "https://login.auth.security.verify.portal-10.example.com/session",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Excessive subdomain levels (>= 4 dots) hiding true host"
+    },
+    {
+      "id": "SURL_101",
+      "category": "suspicious_url",
+      "subcategory": "userinfo_embedded",
+      "url": "https://support-bank.test@phishing-target-1.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "User information preceding @ symbol intended to mislead destination"
+    },
+    {
+      "id": "SURL_102",
+      "category": "suspicious_url",
+      "subcategory": "userinfo_embedded",
+      "url": "https://support-bank.test@phishing-target-2.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "User information preceding @ symbol intended to mislead destination"
+    },
+    {
+      "id": "SURL_103",
+      "category": "suspicious_url",
+      "subcategory": "userinfo_embedded",
+      "url": "https://support-bank.test@phishing-target-3.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "User information preceding @ symbol intended to mislead destination"
+    },
+    {
+      "id": "SURL_104",
+      "category": "suspicious_url",
+      "subcategory": "userinfo_embedded",
+      "url": "https://support-bank.test@phishing-target-4.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "User information preceding @ symbol intended to mislead destination"
+    },
+    {
+      "id": "SURL_105",
+      "category": "suspicious_url",
+      "subcategory": "userinfo_embedded",
+      "url": "https://support-bank.test@phishing-target-5.example.com/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "User information preceding @ symbol intended to mislead destination"
+    },
+    {
+      "id": "SURL_106",
+      "category": "suspicious_url",
+      "subcategory": "ip_host",
+      "url": "http://192.168.1.10/bank/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "IP address host instead of named domain combined with unencrypted HTTP"
+    },
+    {
+      "id": "SURL_107",
+      "category": "suspicious_url",
+      "subcategory": "ip_host",
+      "url": "http://192.168.1.11/bank/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "IP address host instead of named domain combined with unencrypted HTTP"
+    },
+    {
+      "id": "SURL_108",
+      "category": "suspicious_url",
+      "subcategory": "ip_host",
+      "url": "http://192.168.1.12/bank/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "IP address host instead of named domain combined with unencrypted HTTP"
+    },
+    {
+      "id": "SURL_109",
+      "category": "suspicious_url",
+      "subcategory": "ip_host",
+      "url": "http://192.168.1.13/bank/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "IP address host instead of named domain combined with unencrypted HTTP"
+    },
+    {
+      "id": "SURL_110",
+      "category": "suspicious_url",
+      "subcategory": "ip_host",
+      "url": "http://192.168.1.14/bank/login",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "IP address host instead of named domain combined with unencrypted HTTP"
+    },
+    {
+      "id": "SURL_111",
+      "category": "suspicious_url",
+      "subcategory": "percent_encoding",
+      "url": "https://apple-secure-1.example.com/%6c%6f%67%69%6e",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand hostname with obfuscated percent-encoded path"
+    },
+    {
+      "id": "SURL_112",
+      "category": "suspicious_url",
+      "subcategory": "percent_encoding",
+      "url": "https://apple-secure-2.example.com/%6c%6f%67%69%6e",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand hostname with obfuscated percent-encoded path"
+    },
+    {
+      "id": "SURL_113",
+      "category": "suspicious_url",
+      "subcategory": "percent_encoding",
+      "url": "https://apple-secure-3.example.com/%6c%6f%67%69%6e",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand hostname with obfuscated percent-encoded path"
+    },
+    {
+      "id": "SURL_114",
+      "category": "suspicious_url",
+      "subcategory": "percent_encoding",
+      "url": "https://apple-secure-4.example.com/%6c%6f%67%69%6e",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand hostname with obfuscated percent-encoded path"
+    },
+    {
+      "id": "SURL_115",
+      "category": "suspicious_url",
+      "subcategory": "percent_encoding",
+      "url": "https://apple-secure-5.example.com/%6c%6f%67%69%6e",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Brand hostname with obfuscated percent-encoded path"
+    }
+  ],
+  "benign_urls": [
+    {
+      "id": "BURL_001",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-1.example.com/articles/tech-trends-2025",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_002",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-2.example.com/articles/tech-trends-2026",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_003",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-3.example.com/articles/tech-trends-2027",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_004",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-4.example.com/articles/tech-trends-2028",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_005",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-5.example.com/articles/tech-trends-2029",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_006",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-6.example.com/articles/tech-trends-2030",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_007",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-7.example.com/articles/tech-trends-2031",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_008",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-8.example.com/articles/tech-trends-2032",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_009",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-9.example.com/articles/tech-trends-2033",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_010",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-10.example.com/articles/tech-trends-2034",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_011",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-11.example.com/articles/tech-trends-2035",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_012",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-12.example.com/articles/tech-trends-2036",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_013",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-13.example.com/articles/tech-trends-2037",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_014",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-14.example.com/articles/tech-trends-2038",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_015",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-15.example.com/articles/tech-trends-2039",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_016",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-16.example.com/articles/tech-trends-2040",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_017",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-17.example.com/articles/tech-trends-2041",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_018",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-18.example.com/articles/tech-trends-2042",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_019",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-19.example.com/articles/tech-trends-2043",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_020",
+      "category": "benign_url",
+      "subcategory": "general_web",
+      "url": "https://news-portal-20.example.com/articles/tech-trends-2044",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard news article URL with clean domain and path"
+    },
+    {
+      "id": "BURL_021",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-1.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_022",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-2.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_023",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-3.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_024",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-4.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_025",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-5.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_026",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-6.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_027",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-7.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_028",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-8.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_029",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-9.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_030",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-10.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_031",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-11.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_032",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-12.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_033",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-13.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_034",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-14.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_035",
+      "category": "benign_url",
+      "subcategory": "normal_login",
+      "url": "https://account-hub-15.example.com/signin",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard login path without impersonated brand flags"
+    },
+    {
+      "id": "BURL_036",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-1.example.com/items/detail?id=1000&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_037",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-2.example.com/items/detail?id=1001&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_038",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-3.example.com/items/detail?id=1002&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_039",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-4.example.com/items/detail?id=1003&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_040",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-5.example.com/items/detail?id=1004&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_041",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-6.example.com/items/detail?id=1005&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_042",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-7.example.com/items/detail?id=1006&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_043",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-8.example.com/items/detail?id=1007&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_044",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-9.example.com/items/detail?id=1008&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_045",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-10.example.com/items/detail?id=1009&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_046",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-11.example.com/items/detail?id=1010&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_047",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-12.example.com/items/detail?id=1011&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_048",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-13.example.com/items/detail?id=1012&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_049",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-14.example.com/items/detail?id=1013&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_050",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-15.example.com/items/detail?id=1014&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_051",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-16.example.com/items/detail?id=1015&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_052",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-17.example.com/items/detail?id=1016&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_053",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-18.example.com/items/detail?id=1017&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_054",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-19.example.com/items/detail?id=1018&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_055",
+      "category": "benign_url",
+      "subcategory": "ecommerce_product",
+      "url": "https://store-merchandise-20.example.com/items/detail?id=1019&category=books&ref=search",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard shopping item details with harmless query strings"
+    },
+    {
+      "id": "BURL_056",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-1.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_057",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-2.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_058",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-3.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_059",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-4.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_060",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-5.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_061",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-6.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_062",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-7.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_063",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-8.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_064",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-9.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_065",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-10.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_066",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-11.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_067",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-12.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_068",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-13.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_069",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-14.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_070",
+      "category": "benign_url",
+      "subcategory": "university_edu",
+      "url": "https://university-campus-15.example.org/departments/computer-science/faculty",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Academic institutional directory path"
+    },
+    {
+      "id": "BURL_071",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-1.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_072",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-2.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_073",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-3.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_074",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-4.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_075",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-5.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_076",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-6.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_077",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-7.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_078",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-8.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_079",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-9.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_080",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-10.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_081",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-11.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_082",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-12.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_083",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-13.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_084",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-14.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_085",
+      "category": "benign_url",
+      "subcategory": "gov_services",
+      "url": "https://public-services-15.example.gov.lk/citizen/renewal-forms",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Official public service form informational page"
+    },
+    {
+      "id": "BURL_086",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-1.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_087",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-2.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_088",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-3.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_089",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-4.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_090",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-5.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_091",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-6.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_092",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-7.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_093",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-8.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_094",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-9.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_095",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-10.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_096",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-11.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_097",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-12.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_098",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-13.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_099",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-14.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    },
+    {
+      "id": "BURL_100",
+      "category": "benign_url",
+      "subcategory": "developer_docs",
+      "url": "https://api-docs-15.example.net/v2/reference/pagination",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Technical API reference documentation"
+    }
+  ],
+  "scam_texts": [
+    {
+      "id": "STXT_001",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1000 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_002",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1001 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_003",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1002 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_004",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1003 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_005",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1004 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_006",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1005 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_007",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1006 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_008",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1007 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_009",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1008 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_010",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1009 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_011",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1010 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_012",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1011 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_013",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1012 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_014",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1013 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_015",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1014 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_016",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1015 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_017",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1016 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_018",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1017 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_019",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1018 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_020",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1019 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_021",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1020 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_022",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1021 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_023",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1022 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_024",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1023 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_025",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1024 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_026",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1025 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_027",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1026 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_028",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1027 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_029",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1028 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_030",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1029 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_031",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1030 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_032",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1031 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_033",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1032 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_034",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1033 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_035",
+      "category": "scam_text",
+      "subcategory": "english_otp_urgency",
+      "text": "URGENT: Your bank account 1034 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High"
+      ],
+      "rationale": "Direct credential disclosure request (OTP) combined with pressure/urgency"
+    },
+    {
+      "id": "STXT_036",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #500. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_037",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #501. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_038",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #502. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_039",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #503. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_040",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #504. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_041",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #505. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_042",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #506. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_043",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #507. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_044",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #508. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_045",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #509. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_046",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #510. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_047",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #511. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_048",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #512. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_049",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #513. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_050",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #514. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_051",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #515. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_052",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #516. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_053",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #517. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_054",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #518. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_055",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #519. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_056",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #520. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_057",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #521. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_058",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #522. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_059",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #523. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_060",
+      "category": "scam_text",
+      "subcategory": "english_prize_fee",
+      "text": "Congratulations! You won the International Lottery #524. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Reward/prize language combined with advance payment fee request"
+    },
+    {
+      "id": "STXT_061",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #100)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_062",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #101)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_063",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #102)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_064",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #103)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_065",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #104)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_066",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #105)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_067",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #106)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_068",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #107)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_069",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #108)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_070",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #109)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_071",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #110)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_072",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #111)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_073",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #112)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_074",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #113)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_075",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #114)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_076",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #115)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_077",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #116)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_078",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #117)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_079",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #118)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_080",
+      "category": "scam_text",
+      "subcategory": "sinhala_scam",
+      "text": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #119)",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Sinhala language urgency, prize, or OTP disclosure request"
+    },
+    {
+      "id": "STXT_081",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 200",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_082",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 201",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_083",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 202",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_084",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 203",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_085",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 204",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_086",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 205",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_087",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 206",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_088",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 207",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_089",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 208",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_090",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 209",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_091",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 210",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_092",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 211",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_093",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 212",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_094",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 213",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_095",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 214",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_096",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 215",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_097",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 216",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_098",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 217",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_099",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 218",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    },
+    {
+      "id": "STXT_100",
+      "category": "scam_text",
+      "subcategory": "mixed_singlish_scam",
+      "text": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 219",
+      "expected_label": "suspicious",
+      "expected_assessment": [
+        "High",
+        "Medium"
+      ],
+      "rationale": "Mixed Singlish/English urgency with OTP or fee demands"
+    }
+  ],
+  "benign_texts": [
+    {
+      "id": "BTXT_001",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4000 was used for a purchase of USD 12.5 at Supermarket #1. Available balance: USD 1540.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_002",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4001 was used for a purchase of USD 13.5 at Supermarket #2. Available balance: USD 1539.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_003",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4002 was used for a purchase of USD 14.5 at Supermarket #3. Available balance: USD 1538.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_004",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4003 was used for a purchase of USD 15.5 at Supermarket #4. Available balance: USD 1537.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_005",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4004 was used for a purchase of USD 16.5 at Supermarket #5. Available balance: USD 1536.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_006",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4005 was used for a purchase of USD 17.5 at Supermarket #6. Available balance: USD 1535.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_007",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4006 was used for a purchase of USD 18.5 at Supermarket #7. Available balance: USD 1534.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_008",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4007 was used for a purchase of USD 19.5 at Supermarket #8. Available balance: USD 1533.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_009",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4008 was used for a purchase of USD 20.5 at Supermarket #9. Available balance: USD 1532.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_010",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4009 was used for a purchase of USD 21.5 at Supermarket #10. Available balance: USD 1531.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_011",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4010 was used for a purchase of USD 22.5 at Supermarket #11. Available balance: USD 1530.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_012",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4011 was used for a purchase of USD 23.5 at Supermarket #12. Available balance: USD 1529.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_013",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4012 was used for a purchase of USD 24.5 at Supermarket #13. Available balance: USD 1528.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_014",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4013 was used for a purchase of USD 25.5 at Supermarket #14. Available balance: USD 1527.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_015",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4014 was used for a purchase of USD 26.5 at Supermarket #15. Available balance: USD 1526.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_016",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4015 was used for a purchase of USD 27.5 at Supermarket #16. Available balance: USD 1525.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_017",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4016 was used for a purchase of USD 28.5 at Supermarket #17. Available balance: USD 1524.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_018",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4017 was used for a purchase of USD 29.5 at Supermarket #18. Available balance: USD 1523.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_019",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4018 was used for a purchase of USD 30.5 at Supermarket #19. Available balance: USD 1522.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_020",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4019 was used for a purchase of USD 31.5 at Supermarket #20. Available balance: USD 1521.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_021",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4020 was used for a purchase of USD 32.5 at Supermarket #21. Available balance: USD 1520.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_022",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4021 was used for a purchase of USD 33.5 at Supermarket #22. Available balance: USD 1519.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_023",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4022 was used for a purchase of USD 34.5 at Supermarket #23. Available balance: USD 1518.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_024",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4023 was used for a purchase of USD 35.5 at Supermarket #24. Available balance: USD 1517.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_025",
+      "category": "benign_text",
+      "subcategory": "bank_notification",
+      "text": "Your debit card ending in 4024 was used for a purchase of USD 36.5 at Supermarket #25. Available balance: USD 1516.2.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Standard automated transaction receipt with no action demand"
+    },
+    {
+      "id": "BTXT_026",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654321. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_027",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654322. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_028",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654323. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_029",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654324. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_030",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654325. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_031",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654326. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_032",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654327. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_033",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654328. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_034",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654329. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_035",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654330. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_036",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654331. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_037",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654332. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_038",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654333. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_039",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654334. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_040",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654335. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_041",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654336. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_042",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654337. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_043",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654338. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_044",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654339. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_045",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654340. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_046",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654341. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_047",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654342. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_048",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654343. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_049",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654344. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_050",
+      "category": "benign_text",
+      "subcategory": "safe_otp_delivery",
+      "text": "Your verification code is 654345. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Legitimate OTP code delivery containing explicit negation/warning against disclosure"
+    },
+    {
+      "id": "BTXT_051",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789000 has been delivered to your front door on 1 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_052",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789001 has been delivered to your front door on 2 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_053",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789002 has been delivered to your front door on 3 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_054",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789003 has been delivered to your front door on 4 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_055",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789004 has been delivered to your front door on 5 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_056",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789005 has been delivered to your front door on 6 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_057",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789006 has been delivered to your front door on 7 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_058",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789007 has been delivered to your front door on 8 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_059",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789008 has been delivered to your front door on 9 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_060",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789009 has been delivered to your front door on 10 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_061",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789010 has been delivered to your front door on 11 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_062",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789011 has been delivered to your front door on 12 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_063",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789012 has been delivered to your front door on 13 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_064",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789013 has been delivered to your front door on 14 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_065",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789014 has been delivered to your front door on 15 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_066",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789015 has been delivered to your front door on 16 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_067",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789016 has been delivered to your front door on 17 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_068",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789017 has been delivered to your front door on 18 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_069",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789018 has been delivered to your front door on 19 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_070",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789019 has been delivered to your front door on 20 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_071",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789020 has been delivered to your front door on 21 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_072",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789021 has been delivered to your front door on 22 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_073",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789022 has been delivered to your front door on 23 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_074",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789023 has been delivered to your front door on 24 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_075",
+      "category": "benign_text",
+      "subcategory": "delivery_and_appointment",
+      "text": "Package #789024 has been delivered to your front door on 25 Oct. Track your orders anytime at our customer portal.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Factual status update without fee or credential request"
+    },
+    {
+      "id": "BTXT_076",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #1)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_077",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #2)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_078",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #3)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_079",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Campus library will be closed this Friday for maintenance. (Ref #4)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_080",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #5)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_081",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #6)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_082",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #7)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_083",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #8)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_084",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Campus library will be closed this Friday for maintenance. (Ref #9)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_085",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #10)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_086",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #11)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_087",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #12)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_088",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #13)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_089",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Campus library will be closed this Friday for maintenance. (Ref #14)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_090",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #15)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_091",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #16)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_092",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #17)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_093",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #18)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_094",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Campus library will be closed this Friday for maintenance. (Ref #19)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_095",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #20)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_096",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #21)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_097",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #22)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_098",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #23)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_099",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Campus library will be closed this Friday for maintenance. (Ref #24)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    },
+    {
+      "id": "BTXT_100",
+      "category": "benign_text",
+      "subcategory": "personal_and_sinhala_benign",
+      "text": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #25)",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Benign everyday communication in Sinhala or English"
+    }
+  ],
+  "edge_cases": [
+    {
+      "id": "EDGE_001",
+      "category": "edge_case",
+      "subcategory": "empty_string",
+      "text": "",
+      "expected_label": "invalid_or_inconclusive",
+      "rationale": "Empty string input"
+    },
+    {
+      "id": "EDGE_002",
+      "category": "edge_case",
+      "subcategory": "whitespace_only",
+      "text": "   \n\t  ",
+      "expected_label": "invalid_or_inconclusive",
+      "rationale": "Whitespace-only input"
+    },
+    {
+      "id": "EDGE_003",
+      "category": "edge_case",
+      "subcategory": "educational_quoted_scam",
+      "text": "Security Awareness: Scammers often send texts saying \"URGENT: Provide your OTP immediately or account blocked\". Do not respond to them.",
+      "expected_label": "benign",
+      "expected_assessment": [
+        "Inconclusive",
+        "Low"
+      ],
+      "rationale": "Scam pattern inside explicitly quoted educational awareness clause"
+    },
+    {
+      "id": "EDGE_004",
+      "category": "edge_case",
+      "subcategory": "malformed_url_scheme",
+      "kind": "url",
+      "text": "htt://invalid-scheme.example.com",
+      "expected_label": "error",
+      "rationale": "Missing valid http/https scheme"
+    },
+    {
+      "id": "EDGE_005",
+      "category": "edge_case",
+      "subcategory": "malformed_url_slash",
+      "kind": "url",
+      "text": "https:///missing-host.example.com",
+      "expected_label": "error",
+      "rationale": "Malformed triple-slash URL"
+    },
+    {
+      "id": "EDGE_006",
+      "category": "edge_case",
+      "subcategory": "very_long_url",
+      "kind": "url",
+      "text": "https://example.com/search?param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&param=value&",
+      "expected_label": "benign",
+      "rationale": "Extremely long query string but benign"
+    },
+    {
+      "id": "EDGE_007",
+      "category": "edge_case",
+      "subcategory": "excessive_length_text",
+      "text": "Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. Normal announcement. ",
+      "expected_label": "benign",
+      "rationale": "Long text with repeated benign phrases"
+    },
+    {
+      "id": "EDGE_008",
+      "category": "edge_case",
+      "subcategory": "unicode_domain",
+      "kind": "url",
+      "text": "https://xn--e1afmkfd.example.com/",
+      "expected_label": "suspicious",
+      "rationale": "Internationalized punycode domain flags inspection"
+    },
+    {
+      "id": "EDGE_009",
+      "category": "edge_case",
+      "subcategory": "multiple_userinfo_ats",
+      "kind": "url",
+      "text": "https://user@admin@example.com/portal",
+      "expected_label": "suspicious",
+      "rationale": "Multiple @ signs in authority component"
+    },
+    {
+      "id": "EDGE_010",
+      "category": "edge_case",
+      "subcategory": "unsupported_script_warning",
+      "text": "ඔබගේ ගිණුම පරික්ෂා කරන්න: https://news.example.com/test",
+      "expected_label": "benign",
+      "rationale": "Sinhala text with benign URL without threats"
+    },
+    {
+      "id": "EDGE_011",
+      "category": "edge_case",
+      "subcategory": "edge_variant_11",
+      "text": "Sample edge test #11 with special chars: <script>alert(11)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_012",
+      "category": "edge_case",
+      "subcategory": "edge_variant_12",
+      "text": "Sample edge test #12 with special chars: <script>alert(12)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_013",
+      "category": "edge_case",
+      "subcategory": "edge_variant_13",
+      "text": "Sample edge test #13 with special chars: <script>alert(13)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_014",
+      "category": "edge_case",
+      "subcategory": "edge_variant_14",
+      "text": "Sample edge test #14 with special chars: <script>alert(14)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_015",
+      "category": "edge_case",
+      "subcategory": "edge_variant_15",
+      "text": "Sample edge test #15 with special chars: <script>alert(15)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_016",
+      "category": "edge_case",
+      "subcategory": "edge_variant_16",
+      "text": "Sample edge test #16 with special chars: <script>alert(16)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_017",
+      "category": "edge_case",
+      "subcategory": "edge_variant_17",
+      "text": "Sample edge test #17 with special chars: <script>alert(17)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_018",
+      "category": "edge_case",
+      "subcategory": "edge_variant_18",
+      "text": "Sample edge test #18 with special chars: <script>alert(18)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_019",
+      "category": "edge_case",
+      "subcategory": "edge_variant_19",
+      "text": "Sample edge test #19 with special chars: <script>alert(19)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_020",
+      "category": "edge_case",
+      "subcategory": "edge_variant_20",
+      "text": "Sample edge test #20 with special chars: <script>alert(20)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_021",
+      "category": "edge_case",
+      "subcategory": "edge_variant_21",
+      "text": "Sample edge test #21 with special chars: <script>alert(21)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_022",
+      "category": "edge_case",
+      "subcategory": "edge_variant_22",
+      "text": "Sample edge test #22 with special chars: <script>alert(22)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_023",
+      "category": "edge_case",
+      "subcategory": "edge_variant_23",
+      "text": "Sample edge test #23 with special chars: <script>alert(23)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_024",
+      "category": "edge_case",
+      "subcategory": "edge_variant_24",
+      "text": "Sample edge test #24 with special chars: <script>alert(24)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_025",
+      "category": "edge_case",
+      "subcategory": "edge_variant_25",
+      "text": "Sample edge test #25 with special chars: <script>alert(25)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_026",
+      "category": "edge_case",
+      "subcategory": "edge_variant_26",
+      "text": "Sample edge test #26 with special chars: <script>alert(26)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_027",
+      "category": "edge_case",
+      "subcategory": "edge_variant_27",
+      "text": "Sample edge test #27 with special chars: <script>alert(27)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_028",
+      "category": "edge_case",
+      "subcategory": "edge_variant_28",
+      "text": "Sample edge test #28 with special chars: <script>alert(28)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_029",
+      "category": "edge_case",
+      "subcategory": "edge_variant_29",
+      "text": "Sample edge test #29 with special chars: <script>alert(29)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    },
+    {
+      "id": "EDGE_030",
+      "category": "edge_case",
+      "subcategory": "edge_variant_30",
+      "text": "Sample edge test #30 with special chars: <script>alert(30)</script> & harmless content.",
+      "expected_label": "benign",
+      "rationale": "Special HTML/XSS-like characters should not crash the scanner or trigger scam rules"
+    }
+  ]
+}

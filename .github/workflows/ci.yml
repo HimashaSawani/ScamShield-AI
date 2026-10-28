@@ -1,0 +1,56 @@
+name: Validate
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r backend/requirements.txt -r ml/requirements.txt
+      - run: python -m alembic -c backend/alembic.ini upgrade head
+      - run: python -m pytest backend/tests -q
+      - run: python -m compileall -q backend
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check apps/dashboard/app.js
+  mobile:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck
+      - run: npx expo export --platform android --output-dir dist
+        env:
+          EXPO_NO_TELEMETRY: '1'
+  postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: scamshield
+          POSTGRES_PASSWORD: ci-only-not-a-secret
+          POSTGRES_DB: scamshield_test
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U scamshield" --health-interval 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+psycopg://scamshield:ci-only-not-a-secret@localhost:5432/scamshield_test
+      SCAMSHIELD_TEST_DATABASE_URL: postgresql+psycopg://scamshield:ci-only-not-a-secret@localhost:5432/scamshield_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install -r backend/requirements.txt -r ml/requirements.txt
+      - run: python -m alembic -c backend/alembic.ini upgrade head
+      - run: python -m alembic -c backend/alembic.ini check
+      - run: python -m pytest backend/tests -q

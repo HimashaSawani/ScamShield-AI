@@ -1,0 +1,80 @@
+{
+  "threshold_from_frozen_validation_selection": 0.5,
+  "test": {
+    "count": 33660,
+    "class_counts": {
+      "legitimate": 20062,
+      "phishing": 13598
+    },
+    "per_class": {
+      "legitimate": {
+        "precision": 0.9906121843964623,
+        "recall": 0.9993520087728043,
+        "f1-score": 0.9949629041462991,
+        "support": 20062.0
+      },
+      "phishing": {
+        "precision": 0.9990313687504657,
+        "recall": 0.9860273569642595,
+        "f1-score": 0.9924867685702654,
+        "support": 13598.0
+      },
+      "accuracy": 0.9939691027926322,
+      "macro avg": {
+        "precision": 0.9948217765734639,
+        "recall": 0.9926896828685319,
+        "f1-score": 0.9937248363582822,
+        "support": 33660.0
+      },
+      "weighted avg": {
+        "precision": 0.9940133747959197,
+        "recall": 0.9939691027926322,
+        "f1-score": 0.9939625924539964,
+        "support": 33660.0
+      }
+    },
+    "macro_f1": 0.9937248363582822,
+    "confusion_matrix": {
+      "rows": [
+        "legitimate",
+        "phishing"
+      ],
+      "columns": [
+        "legitimate",
+        "phishing",
+        "Inconclusive"
+      ],
+      "values": [
+        [
+          20049,
+          13,
+          0
+        ],
+        [
+          190,
+          13408,
+          0
+        ]
+      ]
+    },
+    "positive": "phishing",
+    "positive_precision": 0.9990313687504657,
+    "positive_recall": 0.9860273569642595,
+    "positive_f1": 0.9924867685702654,
+    "false_positive_rate": 0.0006479912271956934,
+    "false_positives": 13,
+    "false_negatives_including_abstention": 190,
+    "inconclusive_rate": 0.0,
+    "decision_coverage": 1.0,
+    "average_precision_PR_AUC": 0.9969217093736198
+  },
+  "selection_unchanged": {
+    "candidate": "static-random-forest",
+    "threshold": 0.5,
+    "hybrid": false,
+    "activation_eligible_on_validation": true,
+    "gate": "positive precision >=.95, recall >=.70, FPR <=.02, >=50 validation examples/class; source-benchmark checks only, external validity unestablished",
+    "selected_before_test": true
+  },
+  "note": "First held-out report for the simple baseline; no reselection or threshold tuning using test results. Data-only forest remains the validation-selected candidate."
+}

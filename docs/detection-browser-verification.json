@@ -1,0 +1,28 @@
+{
+  "base_url": "http://127.0.0.1:8015",
+  "browser": "155.0.8059.85",
+  "fresh_ui_scans": {
+    "A": {
+      "scan_id": "936763fd47f5c28480bb822bc64512d5",
+      "assessment": "High",
+      "version": "rules-1.2.0",
+      "processing": "Completed",
+      "evidence_titles": [
+        "Request to disclose a password or verification code",
+        "Pressure to act quickly or prevent account restrictions"
+      ]
+    },
+    "B": {
+      "scan_id": "83d063a9274ae010f318d2aefcc522b7",
+      "assessment": "Inconclusive",
+      "version": "rules-1.2.0",
+      "processing": "Completed",
+      "evidence_titles": []
+    }
+  },
+  "historical_scan_rendered_with_original_version": "afa6ce00e0b4dd3df043b4f45be4fb3c",
+  "versioned_assets_loaded": true,
+  "javascript_errors": [],
+  "screenshots": "artifacts/detection-*.png",
+  "native_device_test": false
+}

@@ -1,0 +1,43 @@
+{
+  "seed": 20261023,
+  "version": "v1",
+  "threshold_candidates": [
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    0.95
+  ],
+  "selection_metric": "validation macro F1",
+  "text": {
+    "word_ngrams": [
+      1,
+      2
+    ],
+    "word_max_features": 40000,
+    "char_ngrams": [
+      3,
+      5
+    ],
+    "char_max_features": 60000,
+    "min_df": 2,
+    "sublinear_tf": true,
+    "classifier": "LogisticRegression",
+    "max_iter": 1000,
+    "class_weight": "balanced"
+  },
+  "url": {
+    "feature_schema": "url-static-1",
+    "baseline": "StandardScaler plus LogisticRegression max_iter=1500 balanced",
+    "forest": {
+      "n_estimators": 64,
+      "max_depth": 14,
+      "min_samples_leaf": 5,
+      "class_weight": "balanced",
+      "n_jobs": 2
+    }
+  },
+  "note": "Configuration snapshot; no test-based tuning or artifact-weight changes"
+}

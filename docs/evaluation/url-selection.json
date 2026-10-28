@@ -1,0 +1,223 @@
+{
+  "decision": {
+    "candidate": "static-random-forest",
+    "threshold": 0.5,
+    "hybrid": false,
+    "activation_eligible_on_validation": true,
+    "gate": "positive precision >=.95, recall >=.70, FPR <=.02, >=50 validation examples/class; source-benchmark checks only, external validity unestablished",
+    "selected_before_test": true
+  },
+  "candidates": {
+    "scaled-logistic": {
+      "threshold": 0.5,
+      "validation": {
+        "count": 35846,
+        "class_counts": {
+          "legitimate": 20255,
+          "phishing": 15591
+        },
+        "per_class": {
+          "legitimate": {
+            "precision": 0.9881382407497803,
+            "recall": 0.9994075536904468,
+            "f1-score": 0.9937409489212341,
+            "support": 20255.0
+          },
+          "phishing": {
+            "precision": 0.99921875,
+            "recall": 0.9844140850490668,
+            "f1-score": 0.9917611708830086,
+            "support": 15591.0
+          },
+          "accuracy": 0.9928862355632427,
+          "macro avg": {
+            "precision": 0.9936784953748902,
+            "recall": 0.9919108193697568,
+            "f1-score": 0.9927510599021214,
+            "support": 35846.0
+          },
+          "weighted avg": {
+            "precision": 0.9929576409539921,
+            "recall": 0.9928862355632427,
+            "f1-score": 0.9928798564871,
+            "support": 35846.0
+          }
+        },
+        "macro_f1": 0.9927510599021214,
+        "confusion_matrix": {
+          "rows": [
+            "legitimate",
+            "phishing"
+          ],
+          "columns": [
+            "legitimate",
+            "phishing",
+            "Inconclusive"
+          ],
+          "values": [
+            [
+              20243,
+              12,
+              0
+            ],
+            [
+              243,
+              15348,
+              0
+            ]
+          ]
+        },
+        "positive": "phishing",
+        "positive_precision": 0.99921875,
+        "positive_recall": 0.9844140850490668,
+        "positive_f1": 0.9917611708830087,
+        "false_positive_rate": 0.0005924463095531967,
+        "false_positives": 12,
+        "false_negatives_including_abstention": 243,
+        "inconclusive_rate": 0.0,
+        "decision_coverage": 1.0,
+        "average_precision_PR_AUC": 0.9974380400591703
+      },
+      "training_seconds": 5.6228993000113405
+    },
+    "static-random-forest": {
+      "threshold": 0.5,
+      "validation": {
+        "count": 35846,
+        "class_counts": {
+          "legitimate": 20255,
+          "phishing": 15591
+        },
+        "per_class": {
+          "legitimate": {
+            "precision": 0.9926459773496102,
+            "recall": 0.9996050357936312,
+            "f1-score": 0.9961133523565876,
+            "support": 20255.0
+          },
+          "phishing": {
+            "precision": 0.9994821671305586,
+            "recall": 0.990379064845103,
+            "f1-score": 0.994909793814433,
+            "support": 15591.0
+          },
+          "accuracy": 0.9955922557607544,
+          "macro avg": {
+            "precision": 0.9960640722400844,
+            "recall": 0.9949920503193671,
+            "f1-score": 0.9955115730855103,
+            "support": 35846.0
+          },
+          "weighted avg": {
+            "precision": 0.9956193365772722,
+            "recall": 0.9955922557607544,
+            "f1-score": 0.9955898718781316,
+            "support": 35846.0
+          }
+        },
+        "macro_f1": 0.9955115730855103,
+        "confusion_matrix": {
+          "rows": [
+            "legitimate",
+            "phishing"
+          ],
+          "columns": [
+            "legitimate",
+            "phishing",
+            "Inconclusive"
+          ],
+          "values": [
+            [
+              20247,
+              8,
+              0
+            ],
+            [
+              150,
+              15441,
+              0
+            ]
+          ]
+        },
+        "positive": "phishing",
+        "positive_precision": 0.9994821671305586,
+        "positive_recall": 0.990379064845103,
+        "positive_f1": 0.9949097938144329,
+        "false_positive_rate": 0.00039496420636879785,
+        "false_positives": 8,
+        "false_negatives_including_abstention": 150,
+        "inconclusive_rate": 0.0,
+        "decision_coverage": 1.0,
+        "average_precision_PR_AUC": 0.9983922554975052
+      },
+      "training_seconds": 9.170701300026849
+    }
+  },
+  "hybrid_validation": {
+    "count": 35846,
+    "class_counts": {
+      "legitimate": 20255,
+      "phishing": 15591
+    },
+    "per_class": {
+      "legitimate": {
+        "precision": 0.9926459773496102,
+        "recall": 0.9996050357936312,
+        "f1-score": 0.9961133523565876,
+        "support": 20255.0
+      },
+      "phishing": {
+        "precision": 0.9994821671305586,
+        "recall": 0.990379064845103,
+        "f1-score": 0.994909793814433,
+        "support": 15591.0
+      },
+      "accuracy": 0.9955922557607544,
+      "macro avg": {
+        "precision": 0.9960640722400844,
+        "recall": 0.9949920503193671,
+        "f1-score": 0.9955115730855103,
+        "support": 35846.0
+      },
+      "weighted avg": {
+        "precision": 0.9956193365772722,
+        "recall": 0.9955922557607544,
+        "f1-score": 0.9955898718781316,
+        "support": 35846.0
+      }
+    },
+    "macro_f1": 0.9955115730855103,
+    "confusion_matrix": {
+      "rows": [
+        "legitimate",
+        "phishing"
+      ],
+      "columns": [
+        "legitimate",
+        "phishing",
+        "Inconclusive"
+      ],
+      "values": [
+        [
+          20247,
+          8,
+          0
+        ],
+        [
+          150,
+          15441,
+          0
+        ]
+      ]
+    },
+    "positive": "phishing",
+    "positive_precision": 0.9994821671305586,
+    "positive_recall": 0.990379064845103,
+    "positive_f1": 0.9949097938144329,
+    "false_positive_rate": 0.00039496420636879785,
+    "false_positives": 8,
+    "false_negatives_including_abstention": 150,
+    "inconclusive_rate": 0.0,
+    "decision_coverage": 1.0
+  }
+}

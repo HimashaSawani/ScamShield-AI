@@ -1,0 +1,52 @@
+{
+  "mode": "after",
+  "health": {
+    "status": "ok",
+    "version": "rules-1.2.0"
+  },
+  "assets": {
+    "app.js": {
+      "matches_workspace": true,
+      "sha256": "cb4e971c27af736d3e2e7c77efb005d6ccd49a006d37b98a556e9ba41fe92466"
+    },
+    "style.css": {
+      "matches_workspace": true,
+      "sha256": "22f9d0fee11eaf0c2e998a213ad0cff2bf746166bba409045d7cb251ddc68fba"
+    }
+  },
+  "results": {
+    "A": {
+      "id": "3704bad0ee0a19efb725424b17b856c7",
+      "processing_status": "completed",
+      "assessment": "High",
+      "score": 65,
+      "version": "rules-1.2.0",
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "evidence": [
+        {
+          "title": "Request to disclose a password or verification code",
+          "quote": "Reply with your password and OTP",
+          "weight": 45
+        },
+        {
+          "title": "Pressure to act quickly or prevent account restrictions",
+          "quote": "account will be blocked",
+          "weight": 20
+        }
+      ]
+    },
+    "B": {
+      "id": "e92347b7c3df5e9446932a1d4f73bcf3",
+      "processing_status": "completed",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "version": "rules-1.2.0",
+      "evidence_codes": [],
+      "evidence": []
+    }
+  },
+  "historical_results_unchanged": true
+}

@@ -1,0 +1,83 @@
+# Prepared only; requires DNS, SMTP credentials, and a tested release image.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: scamshield
+      POSTGRES_DB: scamshield
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+    volumes: [database:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U scamshield]
+      interval: 5s
+      retries: 10
+  migrate:
+    image: ${SCAMSHIELD_IMAGE:?Use a tested versioned image}
+    command: [python, -m, alembic, -c, backend/alembic.ini, upgrade, head]
+    environment: &environment
+      DATABASE_URL: postgresql+psycopg://scamshield:${POSTGRES_PASSWORD}@db:5432/scamshield
+      STORAGE_PATH: /data/screenshots
+      DEV_EMAIL_TOKENS: '0'
+      SMTP_HOST: ${SMTP_HOST:?required}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_FROM: ${SMTP_FROM:?required}
+      SMTP_TLS: '1'
+      SMTP_USER: ${SMTP_USER:?required}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:?required}
+      RETENTION_DAYS: ${RETENTION_DAYS:-90}
+      OCR_LANGUAGES: eng+sin+tam
+      SCAMSHIELD_MODEL_DIR: ${SCAMSHIELD_MODEL_DIR:-}
+      SCAMSHIELD_MODEL_MANIFEST_SHA256: ${SCAMSHIELD_MODEL_MANIFEST_SHA256:-}
+    depends_on:
+      db:
+        condition: service_healthy
+  api:
+    image: ${SCAMSHIELD_IMAGE:?required}
+    environment: *environment
+    volumes: [screenshots:/data, './models:/models:ro']
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    command: [python, -m, uvicorn, backend.app.main:app, --host, 0.0.0.0, --port, '8000', --no-access-log]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://localhost:8000/api/health")']
+      interval: 15s
+      retries: 5
+    restart: unless-stopped
+  worker:
+    image: ${SCAMSHIELD_IMAGE:?required}
+    command: [python, -m, backend.app.worker]
+    environment: *environment
+    volumes: [screenshots:/data, './models:/models:ro']
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, 'from backend.app.db import Session; from backend.app.observability import ready; db=Session(); assert ready(db)']
+      interval: 30s
+      retries: 3
+    restart: unless-stopped
+  proxy:
+    image: caddy:2-alpine
+    environment:
+      SCAMSHIELD_DOMAIN: ${SCAMSHIELD_DOMAIN:?required}
+    ports: ['443:443', '80:80']
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - certificates:/data
+      - proxy_config:/config
+    depends_on: [api]
+    restart: unless-stopped
+volumes:
+  database:
+  screenshots:
+  certificates:
+  proxy_config:

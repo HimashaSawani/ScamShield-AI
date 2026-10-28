@@ -1,0 +1,13 @@
+{
+  "https_by_class": {
+    "legitimate": {
+      "rows": 134850,
+      "https": 134850
+    },
+    "phishing": {
+      "rows": 100515,
+      "https": 48881
+    }
+  },
+  "note": "Collection-level correlation is not evidence that HTTPS establishes safety; model negatives never verify legitimacy. External/time-held-out checks remain required."
+}

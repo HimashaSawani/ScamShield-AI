@@ -1,0 +1,5772 @@
+{
+  "timestamp": 1793021319.10296,
+  "url_metrics": {
+    "TP": 71,
+    "FP": 0,
+    "TN": 100,
+    "FN": 44,
+    "precision": 1.0,
+    "recall": 0.6174,
+    "f1_score": 0.7634,
+    "accuracy": 0.7953,
+    "fpr": 0.0,
+    "avg_latency_ms": 4100.14,
+    "subcategories": {
+      "brand_impersonation": {
+        "total": 25,
+        "flagged": 1,
+        "clean": 24,
+        "expected": "suspicious"
+      },
+      "login_verification": {
+        "total": 20,
+        "flagged": 20,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "account_suspension": {
+        "total": 15,
+        "flagged": 15,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "delivery_fee": {
+        "total": 10,
+        "flagged": 0,
+        "clean": 10,
+        "expected": "suspicious"
+      },
+      "prize_giveaway": {
+        "total": 10,
+        "flagged": 10,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "excessive_subdomains": {
+        "total": 10,
+        "flagged": 0,
+        "clean": 10,
+        "expected": "suspicious"
+      },
+      "payment_verification": {
+        "total": 10,
+        "flagged": 10,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "percent_encoding": {
+        "total": 5,
+        "flagged": 5,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "userinfo_embedded": {
+        "total": 5,
+        "flagged": 5,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "general_web": {
+        "total": 20,
+        "flagged": 0,
+        "clean": 20,
+        "expected": "benign"
+      },
+      "ip_host": {
+        "total": 5,
+        "flagged": 5,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "normal_login": {
+        "total": 15,
+        "flagged": 0,
+        "clean": 15,
+        "expected": "benign"
+      },
+      "ecommerce_product": {
+        "total": 20,
+        "flagged": 0,
+        "clean": 20,
+        "expected": "benign"
+      },
+      "university_edu": {
+        "total": 15,
+        "flagged": 0,
+        "clean": 15,
+        "expected": "benign"
+      },
+      "gov_services": {
+        "total": 15,
+        "flagged": 0,
+        "clean": 15,
+        "expected": "benign"
+      },
+      "developer_docs": {
+        "total": 15,
+        "flagged": 0,
+        "clean": 15,
+        "expected": "benign"
+      }
+    }
+  },
+  "text_metrics": {
+    "TP": 95,
+    "FP": 0,
+    "TN": 100,
+    "FN": 5,
+    "precision": 1.0,
+    "recall": 0.95,
+    "f1_score": 0.9744,
+    "accuracy": 0.975,
+    "fpr": 0.0,
+    "avg_latency_ms": 4099.64,
+    "subcategories": {
+      "english_otp_urgency": {
+        "total": 35,
+        "flagged": 35,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "english_prize_fee": {
+        "total": 25,
+        "flagged": 25,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "sinhala_scam": {
+        "total": 20,
+        "flagged": 15,
+        "clean": 5,
+        "expected": "suspicious"
+      },
+      "mixed_singlish_scam": {
+        "total": 20,
+        "flagged": 20,
+        "clean": 0,
+        "expected": "suspicious"
+      },
+      "bank_notification": {
+        "total": 25,
+        "flagged": 0,
+        "clean": 25,
+        "expected": "benign"
+      },
+      "safe_otp_delivery": {
+        "total": 25,
+        "flagged": 0,
+        "clean": 25,
+        "expected": "benign"
+      },
+      "delivery_and_appointment": {
+        "total": 25,
+        "flagged": 0,
+        "clean": 25,
+        "expected": "benign"
+      },
+      "personal_and_sinhala_benign": {
+        "total": 25,
+        "flagged": 0,
+        "clean": 25,
+        "expected": "benign"
+      }
+    }
+  },
+  "e2e_workflow": {
+    "registration": true,
+    "verification": true,
+    "login_session": true,
+    "tenant_isolation_read": true,
+    "tenant_isolation_delete": true,
+    "report_submission": true,
+    "analyst_queue_read": true,
+    "analyst_decision": true,
+    "review_reflection": true,
+    "account_deletion": true
+  },
+  "runs": [
+    {
+      "id": "SURL_008",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://hsbc-bank-confirm-identity.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_017",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://apple-signin.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_020",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://netflix-alert.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_016",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://paypal-auth.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_004",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://chase-bank-secure.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 20,
+      "evidence_codes": [
+        "brand_host"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_019",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://chase-bank-session-renew.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_009",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://wellsfargo-session-renew.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_007",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://google-signin.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_001",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://paypal-login.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_002",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://apple-verify.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 20,
+      "evidence_codes": [
+        "brand_host"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_010",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://bankofceylon-alert.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_003",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://microsoft-security.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_011",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://dialog-telecom-login.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_012",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://peoplesbank-verify.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 20,
+      "evidence_codes": [
+        "brand_host"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_013",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://commercialbank-security.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_018",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://microsoft-confirm-identity.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_005",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://netflix-account-update.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_014",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://ebay-secure.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_015",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://meta-account-update.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_006",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://amazon-auth.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4104.74
+    },
+    {
+      "id": "SURL_032",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-7.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_036",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-11.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_038",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-13.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_037",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-12.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_039",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-14.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_033",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-8.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_034",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-9.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_027",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-2.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_022",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://google-verify.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_035",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-10.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_031",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-6.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_040",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-15.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_023",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://hsbc-bank-security.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_029",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-4.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_021",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://amazon-login.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_024",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "https://wellsfargo-secure.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_028",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-3.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_026",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-1.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_030",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-5.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_025",
+      "type": "url",
+      "subcategory": "brand_impersonation",
+      "input": "http://bankofceylon-account-update.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4110.12
+    },
+    {
+      "id": "SURL_047",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-2.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_042",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-17.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_054",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-9.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_056",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-11.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_043",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-18.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_058",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-13.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_045",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-20.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_041",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-16.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_059",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-14.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_046",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-1.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_053",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-8.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_055",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-10.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_052",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-7.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_049",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-4.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_060",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-15.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_048",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-3.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_044",
+      "type": "url",
+      "subcategory": "login_verification",
+      "input": "http://bank-login-verify-19.example.com/portal/signin",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_051",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-6.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_057",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-12.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_050",
+      "type": "url",
+      "subcategory": "account_suspension",
+      "input": "http://paypal-unblock-secure-5.example.org/account/restore",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.4
+    },
+    {
+      "id": "SURL_073",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-3.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_077",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-7.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_067",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-7.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_063",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-3.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_064",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-4.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_079",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-9.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_062",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-2.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_078",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-8.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_070",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-10.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_075",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-5.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_069",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-9.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_065",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-5.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_080",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-10.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_072",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-2.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_076",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-6.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_066",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-6.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_061",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-1.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_074",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-4.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_068",
+      "type": "url",
+      "subcategory": "prize_giveaway",
+      "input": "http://apple-reward-claim-8.sample.net/prize/redeem",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 55,
+      "evidence_codes": [
+        "reward",
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_071",
+      "type": "url",
+      "subcategory": "delivery_fee",
+      "input": "http://express-postal-delivery-1.example.com/fee/release",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 10,
+      "evidence_codes": [
+        "unencrypted"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4100.64
+    },
+    {
+      "id": "SURL_092",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-2.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_099",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-9.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_090",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-10.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_081",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-1.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_098",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-8.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_087",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-7.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_083",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-3.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_089",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-9.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_100",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-10.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_093",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-3.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_094",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-4.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_084",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-4.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_097",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-7.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_095",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-5.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_085",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-5.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_082",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-2.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_086",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-6.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_091",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-1.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_088",
+      "type": "url",
+      "subcategory": "payment_verification",
+      "input": "http://bank-secure-payment-8.example.com/verify-transfer",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "unencrypted",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_096",
+      "type": "url",
+      "subcategory": "excessive_subdomains",
+      "input": "https://login.auth.security.verify.portal-6.example.com/session",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 15,
+      "evidence_codes": [
+        "subdomains"
+      ],
+      "outcome": "FN",
+      "latency_ms": 4096.65
+    },
+    {
+      "id": "SURL_114",
+      "type": "url",
+      "subcategory": "percent_encoding",
+      "input": "https://apple-secure-4.example.com/%6c%6f%67%69%6e",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "encoded_url",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_101",
+      "type": "url",
+      "subcategory": "userinfo_embedded",
+      "input": "https://support-bank.test@phishing-target-1.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "url_credentials"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_112",
+      "type": "url",
+      "subcategory": "percent_encoding",
+      "input": "https://apple-secure-2.example.com/%6c%6f%67%69%6e",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "encoded_url",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_115",
+      "type": "url",
+      "subcategory": "percent_encoding",
+      "input": "https://apple-secure-5.example.com/%6c%6f%67%69%6e",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "encoded_url",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "BURL_004",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-4.example.com/articles/tech-trends-2028",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_110",
+      "type": "url",
+      "subcategory": "ip_host",
+      "input": "http://192.168.1.14/bank/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "ip_host",
+        "unencrypted"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_105",
+      "type": "url",
+      "subcategory": "userinfo_embedded",
+      "input": "https://support-bank.test@phishing-target-5.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "url_credentials"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "BURL_002",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-2.example.com/articles/tech-trends-2026",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_103",
+      "type": "url",
+      "subcategory": "userinfo_embedded",
+      "input": "https://support-bank.test@phishing-target-3.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "url_credentials"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "BURL_001",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-1.example.com/articles/tech-trends-2025",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_111",
+      "type": "url",
+      "subcategory": "percent_encoding",
+      "input": "https://apple-secure-1.example.com/%6c%6f%67%69%6e",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "encoded_url",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_108",
+      "type": "url",
+      "subcategory": "ip_host",
+      "input": "http://192.168.1.12/bank/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "ip_host",
+        "unencrypted"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_113",
+      "type": "url",
+      "subcategory": "percent_encoding",
+      "input": "https://apple-secure-3.example.com/%6c%6f%67%69%6e",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "encoded_url",
+        "brand_host"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_102",
+      "type": "url",
+      "subcategory": "userinfo_embedded",
+      "input": "https://support-bank.test@phishing-target-2.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "url_credentials"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_109",
+      "type": "url",
+      "subcategory": "ip_host",
+      "input": "http://192.168.1.13/bank/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "ip_host",
+        "unencrypted"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_104",
+      "type": "url",
+      "subcategory": "userinfo_embedded",
+      "input": "https://support-bank.test@phishing-target-4.example.com/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "url_credentials"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "BURL_005",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-5.example.com/articles/tech-trends-2029",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_106",
+      "type": "url",
+      "subcategory": "ip_host",
+      "input": "http://192.168.1.10/bank/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "ip_host",
+        "unencrypted"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "SURL_107",
+      "type": "url",
+      "subcategory": "ip_host",
+      "input": "http://192.168.1.11/bank/login",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 30,
+      "evidence_codes": [
+        "ip_host",
+        "unencrypted"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "BURL_003",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-3.example.com/articles/tech-trends-2027",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4110.98
+    },
+    {
+      "id": "BURL_016",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-16.example.com/articles/tech-trends-2040",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_022",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-2.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_010",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-10.example.com/articles/tech-trends-2034",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_007",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-7.example.com/articles/tech-trends-2031",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_018",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-18.example.com/articles/tech-trends-2042",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_008",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-8.example.com/articles/tech-trends-2032",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_013",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-13.example.com/articles/tech-trends-2037",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_017",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-17.example.com/articles/tech-trends-2041",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_025",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-5.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_024",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-4.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_021",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-1.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_006",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-6.example.com/articles/tech-trends-2030",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_023",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-3.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_014",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-14.example.com/articles/tech-trends-2038",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_015",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-15.example.com/articles/tech-trends-2039",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_012",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-12.example.com/articles/tech-trends-2036",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_009",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-9.example.com/articles/tech-trends-2033",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_011",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-11.example.com/articles/tech-trends-2035",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_020",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-20.example.com/articles/tech-trends-2044",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_019",
+      "type": "url",
+      "subcategory": "general_web",
+      "input": "https://news-portal-19.example.com/articles/tech-trends-2043",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.71
+    },
+    {
+      "id": "BURL_032",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-12.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_040",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-5.example.com/items/detail?id=1004&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_035",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-15.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_029",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-9.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_041",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-6.example.com/items/detail?id=1005&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_033",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-13.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_036",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-1.example.com/items/detail?id=1000&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_039",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-4.example.com/items/detail?id=1003&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_026",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-6.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_028",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-8.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_034",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-14.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_027",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-7.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_042",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-7.example.com/items/detail?id=1006&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_043",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-8.example.com/items/detail?id=1007&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_030",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-10.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_031",
+      "type": "url",
+      "subcategory": "normal_login",
+      "input": "https://account-hub-11.example.com/signin",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_045",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-10.example.com/items/detail?id=1009&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_037",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-2.example.com/items/detail?id=1001&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_038",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-3.example.com/items/detail?id=1002&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_044",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-9.example.com/items/detail?id=1008&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4104.5
+    },
+    {
+      "id": "BURL_059",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-4.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_058",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-3.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_054",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-19.example.com/items/detail?id=1018&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_053",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-18.example.com/items/detail?id=1017&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_065",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-10.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_057",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-2.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_056",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-1.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_052",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-17.example.com/items/detail?id=1016&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_048",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-13.example.com/items/detail?id=1012&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_060",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-5.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_055",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-20.example.com/items/detail?id=1019&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_063",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-8.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_064",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-9.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_062",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-7.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_047",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-12.example.com/items/detail?id=1011&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_049",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-14.example.com/items/detail?id=1013&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_051",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-16.example.com/items/detail?id=1015&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_050",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-15.example.com/items/detail?id=1014&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_046",
+      "type": "url",
+      "subcategory": "ecommerce_product",
+      "input": "https://store-merchandise-11.example.com/items/detail?id=1010&category=books&ref=search",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_061",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-6.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4097.38
+    },
+    {
+      "id": "BURL_081",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-11.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_070",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-15.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_079",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-9.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_083",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-13.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_080",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-10.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_077",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-7.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_068",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-13.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_085",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-15.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_078",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-8.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_084",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-14.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_067",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-12.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_072",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-2.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_082",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-12.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_069",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-14.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_075",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-5.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_076",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-6.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_066",
+      "type": "url",
+      "subcategory": "university_edu",
+      "input": "https://university-campus-11.example.org/departments/computer-science/faculty",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_071",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-1.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_073",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-3.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_074",
+      "type": "url",
+      "subcategory": "gov_services",
+      "input": "https://public-services-4.example.gov.lk/citizen/renewal-forms",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4088.38
+    },
+    {
+      "id": "BURL_099",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-14.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_093",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-8.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_090",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-5.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_091",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-6.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_092",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-7.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_089",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-4.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_094",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-9.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_087",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-2.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_086",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-1.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_097",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-12.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_095",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-10.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_088",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-3.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_098",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-13.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_096",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-11.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "BURL_100",
+      "type": "url",
+      "subcategory": "developer_docs",
+      "input": "https://api-docs-15.example.net/v2/reference/pagination",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4089.42
+    },
+    {
+      "id": "STXT_015",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1014 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_020",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1019 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_019",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1018 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_001",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1000 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_007",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1006 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_010",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1009 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_004",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1003 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_011",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1010 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_008",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1007 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_003",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1002 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_012",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1011 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_016",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1015 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_009",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1008 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_017",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1016 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_018",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1017 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_002",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1001 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_013",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1012 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_014",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1013 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_005",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1004 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_006",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1005 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4114.75
+    },
+    {
+      "id": "STXT_038",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #502. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_030",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1029 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_028",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1027 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_032",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1031 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_025",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1024 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_035",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1034 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_024",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1023 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_034",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1033 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_039",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #503. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_040",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #504. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_031",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1030 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_029",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1028 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_033",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1032 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_036",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #500. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_023",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1022 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_022",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1021 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_021",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1020 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_037",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #501. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_027",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1026 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_026",
+      "type": "text",
+      "subcategory": "english_otp_urgency",
+      "input": "URGENT: Your bank account 1025 has been suspended due to suspicious activity. Reply with your OTP code immediately to avoid permanent account closure.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4093.54
+    },
+    {
+      "id": "STXT_048",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #512. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_051",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #515. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_060",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #524. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_058",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #522. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_045",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #509. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_052",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #516. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_042",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #506. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_053",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #517. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_057",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #521. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_050",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #514. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_046",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #510. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_043",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #507. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_049",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #513. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_044",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #508. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_041",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #505. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_054",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #518. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_047",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #511. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_055",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #519. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_056",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #520. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_059",
+      "type": "text",
+      "subcategory": "english_prize_fee",
+      "input": "Congratulations! You won the International Lottery #523. To claim prize, pay an advance fee of $150 immediately within 24 hours.",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4099.13
+    },
+    {
+      "id": "STXT_077",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #116)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_075",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #114)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_066",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #105)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_076",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #115)",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_079",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #118)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_062",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #101)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_065",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #104)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_074",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #113)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_073",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #112)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_069",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #108)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_071",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #110)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_061",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ බැංකු ගිණුම අවහිර කර ඇත. වහාම ඔබගේ OTP අංකය එවන්න නැතහොත් ගිණුම අවලංගු වේ. (Ref #100)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_072",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #111)",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_068",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #107)",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_067",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #106)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_064",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #103)",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_063",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "හදිසි ආරක්ෂක පණිවිඩයයි: ඔබගේ ගිණුම ක්‍රියා විරහිත කර ඇත. මුරපදය වහාම දෙන්න. (Ref #102)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_070",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #109)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_080",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "ඔබගේ කාඩ්පත අත්හිටුවා ඇත. පැය 2ක් ඇතුළත රහස් අංකය එවන්න. (Ref #119)",
+      "expected_type": "suspicious",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "FN",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_078",
+      "type": "text",
+      "subcategory": "sinhala_scam",
+      "input": "සුභ පැතුම්! ඔබ රුපියල් ලක්ෂ 25ක් දිනුම්. ත්‍යාගය ලබා ගැනීමට දැන්ම මුදල් එවන්න. (Ref #117)",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 70,
+      "evidence_codes": [
+        "urgency",
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4102.9
+    },
+    {
+      "id": "STXT_095",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 214",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_097",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 216",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_100",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 219",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 45,
+      "evidence_codes": [
+        "urgency",
+        "payment"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_089",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 208",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_091",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 210",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_086",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 205",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 50,
+      "evidence_codes": [
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_084",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 203",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 45,
+      "evidence_codes": [
+        "urgency",
+        "payment"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_099",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 218",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_088",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 207",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 45,
+      "evidence_codes": [
+        "urgency",
+        "payment"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_094",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 213",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 50,
+      "evidence_codes": [
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_082",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 201",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 50,
+      "evidence_codes": [
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_092",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 211",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 45,
+      "evidence_codes": [
+        "urgency",
+        "payment"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_096",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Bank alert: Pay cash deposit immediately to unblock your account. Ref 215",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 45,
+      "evidence_codes": [
+        "urgency",
+        "payment"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_090",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 209",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 50,
+      "evidence_codes": [
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_098",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Congratulations! Obe number eka dinum adimata tharanga dinuwa. Claim prize walata salli ewanna. Ref 217",
+      "expected_type": "suspicious",
+      "assessment": "Medium",
+      "score": 50,
+      "evidence_codes": [
+        "payment",
+        "reward"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_085",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 204",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_083",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 202",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_093",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 212",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_087",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Security notice: Obe account eka suspend wela thiyenne. Please provide your password to agent within 24 hours. Ref 206",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "STXT_081",
+      "type": "text",
+      "subcategory": "mixed_singlish_scam",
+      "input": "Urgent alert: Obe bank account eka block wela. Ikmanin otp ewanna nathnam account close wei. Ref 200",
+      "expected_type": "suspicious",
+      "assessment": "High",
+      "score": 65,
+      "evidence_codes": [
+        "credentials",
+        "urgency"
+      ],
+      "outcome": "TP",
+      "latency_ms": 4090.32
+    },
+    {
+      "id": "BTXT_006",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4005 was used for a purchase of USD 17.5 at Supermarket #6. Available balance: USD 1535.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_003",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4002 was used for a purchase of USD 14.5 at Supermarket #3. Available balance: USD 1538.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_019",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4018 was used for a purchase of USD 30.5 at Supermarket #19. Available balance: USD 1522.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_020",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4019 was used for a purchase of USD 31.5 at Supermarket #20. Available balance: USD 1521.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_017",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4016 was used for a purchase of USD 28.5 at Supermarket #17. Available balance: USD 1524.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_004",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4003 was used for a purchase of USD 15.5 at Supermarket #4. Available balance: USD 1537.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_005",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4004 was used for a purchase of USD 16.5 at Supermarket #5. Available balance: USD 1536.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_011",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4010 was used for a purchase of USD 22.5 at Supermarket #11. Available balance: USD 1530.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_015",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4014 was used for a purchase of USD 26.5 at Supermarket #15. Available balance: USD 1526.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_010",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4009 was used for a purchase of USD 21.5 at Supermarket #10. Available balance: USD 1531.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_009",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4008 was used for a purchase of USD 20.5 at Supermarket #9. Available balance: USD 1532.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_002",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4001 was used for a purchase of USD 13.5 at Supermarket #2. Available balance: USD 1539.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_016",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4015 was used for a purchase of USD 27.5 at Supermarket #16. Available balance: USD 1525.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_013",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4012 was used for a purchase of USD 24.5 at Supermarket #13. Available balance: USD 1528.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_014",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4013 was used for a purchase of USD 25.5 at Supermarket #14. Available balance: USD 1527.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_007",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4006 was used for a purchase of USD 18.5 at Supermarket #7. Available balance: USD 1534.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_008",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4007 was used for a purchase of USD 19.5 at Supermarket #8. Available balance: USD 1533.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_012",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4011 was used for a purchase of USD 23.5 at Supermarket #12. Available balance: USD 1529.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_018",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4017 was used for a purchase of USD 29.5 at Supermarket #18. Available balance: USD 1523.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_001",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4000 was used for a purchase of USD 12.5 at Supermarket #1. Available balance: USD 1540.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4099.47
+    },
+    {
+      "id": "BTXT_039",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654334. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_037",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654332. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_030",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654325. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_021",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4020 was used for a purchase of USD 32.5 at Supermarket #21. Available balance: USD 1520.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_040",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654335. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_027",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654322. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_036",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654331. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_026",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654321. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_033",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654328. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_031",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654326. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_028",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654323. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_022",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4021 was used for a purchase of USD 33.5 at Supermarket #22. Available balance: USD 1519.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_024",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4023 was used for a purchase of USD 35.5 at Supermarket #24. Available balance: USD 1517.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_034",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654329. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_032",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654327. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_035",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654330. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_025",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4024 was used for a purchase of USD 36.5 at Supermarket #25. Available balance: USD 1516.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_023",
+      "type": "text",
+      "subcategory": "bank_notification",
+      "input": "Your debit card ending in 4022 was used for a purchase of USD 34.5 at Supermarket #23. Available balance: USD 1518.2.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_038",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654333. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_029",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654324. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4094.92
+    },
+    {
+      "id": "BTXT_043",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654338. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_048",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654343. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_054",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789003 has been delivered to your front door on 4 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_047",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654342. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_044",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654339. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_051",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789000 has been delivered to your front door on 1 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_052",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789001 has been delivered to your front door on 2 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_058",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789007 has been delivered to your front door on 8 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_041",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654336. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_057",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789006 has been delivered to your front door on 7 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_050",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654345. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_059",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789008 has been delivered to your front door on 9 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_055",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789004 has been delivered to your front door on 5 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_042",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654337. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_045",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654340. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_053",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789002 has been delivered to your front door on 3 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_046",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654341. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_056",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789005 has been delivered to your front door on 6 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_060",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789009 has been delivered to your front door on 10 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_049",
+      "type": "text",
+      "subcategory": "safe_otp_delivery",
+      "input": "Your verification code is 654344. Never share this code with anyone. Our staff will never ask for your one-time password.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4098.01
+    },
+    {
+      "id": "BTXT_079",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Campus library will be closed this Friday for maintenance. (Ref #4)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_074",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789023 has been delivered to your front door on 24 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_076",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #1)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_075",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789024 has been delivered to your front door on 25 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_064",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789013 has been delivered to your front door on 14 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_068",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789017 has been delivered to your front door on 18 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_080",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #5)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_078",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #3)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_073",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789022 has been delivered to your front door on 23 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_065",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789014 has been delivered to your front door on 15 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_066",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789015 has been delivered to your front door on 16 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_069",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789018 has been delivered to your front door on 19 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_061",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789010 has been delivered to your front door on 11 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_062",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789011 has been delivered to your front door on 12 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_071",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789020 has been delivered to your front door on 21 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_067",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789016 has been delivered to your front door on 17 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_063",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789012 has been delivered to your front door on 13 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_072",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789021 has been delivered to your front door on 22 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_077",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #2)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_070",
+      "type": "text",
+      "subcategory": "delivery_and_appointment",
+      "input": "Package #789019 has been delivered to your front door on 20 Oct. Track your orders anytime at our customer portal.",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.41
+    },
+    {
+      "id": "BTXT_085",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #10)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_093",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #18)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_099",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Campus library will be closed this Friday for maintenance. (Ref #24)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_100",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #25)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_082",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #7)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_095",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #20)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_092",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #17)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_086",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #11)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_083",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #8)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_081",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #6)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_096",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #21)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_088",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #13)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_098",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Hi, are we meeting for coffee today at 4 PM? Let me know. (Ref #23)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_084",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Campus library will be closed this Friday for maintenance. (Ref #9)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_090",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Doctor appointment confirmation for Dr. Perera tomorrow at 10 AM. (Ref #15)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_087",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #12)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_094",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Campus library will be closed this Friday for maintenance. (Ref #19)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_097",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "ඔබගේ පොත පුස්තකාලයට ලැබී ඇත. කරුණාකර සතියක් ඇතුළත ලබාගන්න. (Ref #22)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_091",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "හෙට උදෑසන රැස්වීම පෙ.ව. 9.30 ට කාර්යාලයේදී පැවැත්වේ. (Ref #16)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    },
+    {
+      "id": "BTXT_089",
+      "type": "text",
+      "subcategory": "personal_and_sinhala_benign",
+      "input": "Campus library will be closed this Friday for maintenance. (Ref #14)",
+      "expected_type": "benign",
+      "assessment": "Inconclusive",
+      "score": 0,
+      "evidence_codes": [],
+      "outcome": "TN",
+      "latency_ms": 4101.94
+    }
+  ]
+}

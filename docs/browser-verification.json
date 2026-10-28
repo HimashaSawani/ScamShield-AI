@@ -1,0 +1,21 @@
+{
+  "browser": "155.0.8059.85",
+  "passed": [
+    "registration/resend/verification/login",
+    "text/evidence/explicit report sharing",
+    "static URL/missing live check disclosure",
+    "controlled OCR preview/correction/failure/manual fallback",
+    "history/scan deletion",
+    "layout overflow: 390/768/1440 pixels",
+    "network failure state",
+    "expired session returns to login",
+    "analyst decision/campaign grouping",
+    "user sees separate analyst outcome",
+    "password reset/new password login",
+    "MFA enrollment/recovery login/reauthenticated regeneration/session revocation",
+    "account deletion/session removal"
+  ],
+  "javascript_errors": [],
+  "ocr": "controlled fixture, not engine accuracy",
+  "device": "desktop Chrome only, no Android device"
+}

@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: scamshield
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in your environment}
+      POSTGRES_DB: scamshield
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U scamshield]
+      interval: 5s
+      retries: 10
+  api:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+    command: [sh, -c, 'python -m alembic -c backend/alembic.ini upgrade head && python -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --no-access-log']
+    environment: &app-env
+      DATABASE_URL: postgresql+psycopg://scamshield:${POSTGRES_PASSWORD}@db:5432/scamshield
+      STORAGE_PATH: /data/screenshots
+      SMTP_HOST: mail
+      SMTP_PORT: 1025
+      SMTP_FROM: scamshield@localhost
+      RETENTION_DAYS: 90
+      OCR_LANGUAGES: eng+sin+tam
+      SCAMSHIELD_MODEL_DIR: /srv/ml/artifacts/v1-json
+      SCAMSHIELD_MODEL_MANIFEST_SHA256: 833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9
+    volumes:
+      - screenshots:/data
+    ports:
+      - '8000:8000'
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://localhost:8000/api/health")']
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+  worker:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+    command: [python, -m, backend.app.worker]
+    environment: *app-env
+    volumes:
+      - screenshots:/data
+    healthcheck:
+      test: [CMD, python, -c, 'from backend.app.db import Session; from backend.app.observability import ready; db=Session(); assert ready(db)']
+      interval: 30s
+      retries: 3
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+  mail:
+    image: axllent/mailpit:v1.27
+    ports:
+      - '127.0.0.1:8025:8025'
+volumes:
+  database:
+  screenshots:

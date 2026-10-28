@@ -1,0 +1,14 @@
+{
+  "manifest_sha256": "833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9",
+  "enabled_versions": {
+    "url": "scamshield-url-v1"
+  },
+  "frozen_url_test_count": 33660,
+  "production_json_confusion_matrix_matches_training_estimator": true,
+  "latency_ms_including_production_url_features": {
+    "median": 2.1830499899806455,
+    "p95": 3.6878999962937087,
+    "samples": 100
+  },
+  "no_urls_fetched": true
+}

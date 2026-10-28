@@ -1,0 +1,27 @@
+{
+  "engine": "SQLite, local TestClient; not network or PostgreSQL performance",
+  "hardware": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
+    "logical_cpus": 8,
+    "python": "3.13.3"
+  },
+  "dataset": "40 synthetic short English messages; no detection-quality claim",
+  "requests": 40,
+  "client_concurrency": 4,
+  "worker_threads": 2,
+  "http_failures": 0,
+  "completed_scans": 40,
+  "elapsed_seconds": 2.34,
+  "scans_per_second": 17.096,
+  "request_latency_ms": {
+    "median": 153.077,
+    "p95": 322.6,
+    "max": 1823.552
+  },
+  "restore": {
+    "restored_attachments": 1,
+    "database_integrity": "ok",
+    "scans": 40
+  }
+}
