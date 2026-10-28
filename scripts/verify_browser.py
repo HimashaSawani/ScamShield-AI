@@ -24,7 +24,7 @@ def otp(secret=None):
 
 def main():
     results=[]
-    with tempfile.TemporaryDirectory(prefix='scamshield-browser-') as tmp:
+    with tempfile.TemporaryDirectory(prefix='scamshield-browser-',ignore_cleanup_errors=True) as tmp:
         folder=Path(tmp)
         env={**os.environ,'DATABASE_URL':'sqlite:///'+str(folder/'browser-test.db'),'STORAGE_PATH':str(folder/'uploads'),'DEV_EMAIL_TOKENS':'1','SCAMSHIELD_BROWSER_FIXTURE':'1'}
         env.pop('SMTP_HOST',None)
