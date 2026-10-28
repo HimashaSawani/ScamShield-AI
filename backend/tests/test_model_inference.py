@@ -71,3 +71,39 @@ def test_script_scope_and_inference_failure(monkeypatch,tmp_path):
     monkeypatch.setattr('backend.app.model_inference.predict',fail)
     r=enrich(analyze('ordinary words'),'ordinary words','text')
     assert r['assessment']=='Inconclusive' and 'fallback' in r['coverage']['failed'][-1]
+
+def test_released_url_model_bundle_and_worker_inference(monkeypatch):
+    from pathlib import Path
+    from backend.app.model_inference import model_status
+    bundle=Path(__file__).resolve().parents[2]/'ml'/'artifacts'/'v1-json'
+    if not (bundle/'manifest.json').is_file():
+        pytest.skip('v1-json model bundle not present')
+    expected_pin='833de7d2d619c033da5fbb71d266793861e498ef5cbcd592a283df843c6ff5a9'
+    assert hashlib.sha256((bundle/'manifest.json').read_bytes()).hexdigest()==expected_pin
+    monkeypatch.setenv('SCAMSHIELD_MODEL_DIR',str(bundle))
+    monkeypatch.setenv('SCAMSHIELD_MODEL_MANIFEST_SHA256',expected_pin)
+    load_bundle.cache_clear()
+    models=load_bundle(str(bundle),expected_pin)
+    assert list(models.keys())==['url']
+    assert 'text' not in models
+    assert models['url']['version']=='scamshield-url-v1'
+    assert models['url']['feature_schema']==URL_SCHEMA
+    assert models['url']['url_features']==URL_FEATURES
+    status=model_status()
+    assert status['mode']=='rules-plus-model'
+    assert status['enabled']==[{'kind':'url','version':'scamshield-url-v1'}]
+    # Named-domain URL missed by rules alone is elevated to Medium by URL ML without altering indicator score
+    url='https://apple-verify.example.com/login'
+    rule_only=analyze(url,'url')
+    assert rule_only['assessment']=='Inconclusive' and rule_only['score']==20
+    combined=enrich(analyze(url,'url'),url,'url')
+    assert combined['assessment']=='Medium' and combined['score']==20
+    assert combined['model_mode']=='rules-plus-model'
+    assert combined['models'][0]['version']=='scamshield-url-v1'
+    assert combined['models'][0]['prediction']=='phishing'
+    assert 'url model inference scamshield-url-v1' in combined['coverage']['completed']
+    # Legitimate root homepage in source domain style remains Inconclusive when model predicts legitimate
+    legit='https://www.southbankmosaics.com'
+    legit_res=enrich(analyze(legit,'url'),legit,'url')
+    assert legit_res['assessment']=='Inconclusive' and legit_res['score']==0
+    assert legit_res['models'][0]['prediction']=='legitimate'
