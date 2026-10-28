@@ -2,12 +2,12 @@ __pycache__/
 .pytest_cache/
 .venv/
 .venv-release/
-.venv-release/
 node_modules/
 .npm-cache/
 .expo/
 .next/
 apps/mobile/dist/
+apps/mobile/dist-*/
 .env
 .env.*
 !.env.example
