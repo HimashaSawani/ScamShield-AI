@@ -1,41 +1,41 @@
 {
   "candidate_version": "scamshield-url-v2",
-  "chosen_estimator": "static-random-forest",
-  "threshold": 0.85,
+  "chosen_estimator": "scaled-logistic",
+  "threshold": 0.92,
   "validation_gate": {
-    "count": 3237,
+    "count": 4560,
     "class_counts": {
-      "legitimate": 1737,
-      "phishing": 1500
+      "legitimate": 2560,
+      "phishing": 2000
     },
     "per_class": {
       "legitimate": {
-        "precision": 0.9681791396582203,
-        "recall": 0.9458837075417387,
-        "f1-score": 0.9569015725101921,
-        "support": 1737.0
+        "precision": 0.9146075581395349,
+        "recall": 0.983203125,
+        "f1-score": 0.9476656626506024,
+        "support": 2560.0
       },
       "phishing": {
-        "precision": 0.938961038961039,
-        "recall": 0.964,
-        "f1-score": 0.9513157894736842,
-        "support": 1500.0
+        "precision": 0.9762168141592921,
+        "recall": 0.8825,
+        "f1-score": 0.9269957983193278,
+        "support": 2000.0
       },
-      "accuracy": 0.9542786530738337,
+      "accuracy": 0.9390350877192982,
       "macro avg": {
-        "precision": 0.9535700893096297,
-        "recall": 0.9549418537708694,
-        "f1-score": 0.9541086809919381,
-        "support": 3237.0
+        "precision": 0.9454121861494135,
+        "recall": 0.9328515625,
+        "f1-score": 0.9373307304849651,
+        "support": 4560.0
       },
       "weighted avg": {
-        "precision": 0.9546397046734282,
-        "recall": 0.9542786530738337,
-        "f1-score": 0.9543131651716805,
-        "support": 3237.0
+        "precision": 0.9416291616569723,
+        "recall": 0.9390350877192982,
+        "f1-score": 0.938599932680745,
+        "support": 4560.0
       }
     },
-    "macro_f1": 0.9541086809919381,
+    "macro_f1": 0.9373307304849651,
     "confusion_matrix": {
       "rows": [
         "legitimate",
@@ -48,48 +48,57 @@
       ],
       "values": [
         [
-          1643,
-          94,
+          2517,
+          43,
           0
         ],
         [
-          54,
-          1446,
+          235,
+          1765,
           0
         ]
       ]
     },
     "positive": "phishing",
-    "positive_precision": 0.938961038961039,
-    "positive_recall": 0.964,
-    "positive_f1": 0.9513157894736842,
-    "false_positive_rate": 0.05411629245826137,
-    "false_positives": 94,
-    "false_negatives_including_abstention": 54,
+    "positive_precision": 0.9762168141592921,
+    "positive_recall": 0.8825,
+    "positive_f1": 0.9269957983193277,
+    "false_positive_rate": 0.016796875,
+    "false_positives": 43,
+    "false_negatives_including_abstention": 235,
     "inconclusive_rate": 0.0,
     "decision_coverage": 1.0,
-    "average_precision_PR_AUC": 0.944007181972999,
-    "roc_auc": 0.9653569372481289
+    "average_precision_PR_AUC": 0.9817316806838285,
+    "roc_auc": 0.9806864257812501
+  },
+  "passes_gate": true,
+  "phiusiil_test_metrics": {
+    "total_tested": 33660,
+    "precision": 0.999356033164292,
+    "recall": 0.9130019120458891,
+    "fpr": 0.00039876383212042666,
+    "false_positives": 8,
+    "false_negatives": 1183
   },
   "deep_path_test_results": {
-    "total_tested": 342,
-    "false_positives": 41,
-    "false_positive_rate": 0.11988304093567251
+    "total_tested": 450,
+    "false_positives": 65,
+    "false_positive_rate": 0.14444444444444443
   },
   "stress_set_results": {
     "total_tested": 25,
-    "false_positives": 4,
-    "false_positive_rate": 0.16
+    "false_positives": 3,
+    "false_positive_rate": 0.12
   },
   "synthetic_phishing_recall": {
     "total_tested": 115,
-    "detected": 115,
-    "recall": 1.0
+    "detected": 105,
+    "recall": 0.9130434782608695
   },
   "latency_ms": {
-    "median": 28.018900004099123,
-    "p95": 39.7776300116675
+    "median": 2.2806000197306275,
+    "p95": 2.80030001886189
   },
-  "manifest_sha256": "ac341bb601e8b4a9759ad510fdb8293b50f2c625029d9c6614f6e678a56caacc",
-  "model_sha256": "65c2f07662aa8c83a97e8fd885bc0478c06b08d32d8784ed908f8473c1b6113e"
+  "manifest_sha256": "b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606",
+  "model_sha256": "653a04f5d90792b87ceda9ac5ab993822ba483eae7d8f6aab96198a084bd7eaa"
 }

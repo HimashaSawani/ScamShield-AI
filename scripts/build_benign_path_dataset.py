@@ -1,265 +1,226 @@
 """Build leakage-safe, domain-grouped benign deep-path dataset.
 
-Generates realistic, public-documentation, educational, governmental,
-and technical URLs with varying path depths, query parameters, and filenames.
-Groups strictly by registrable domain to prevent domain leakage.
+Generates realistic, diverse, non-duplicative URLs across documentation,
+educational, governmental, news, and technical domains.
+Partitioned strictly by registrable domain with ZERO domain overlap.
 """
 import json
 from pathlib import Path
-import tldextract
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-EXTRACT = tldextract.TLDExtract(suffix_list_urls=(), cache_dir=None, include_psl_private_domains=True)
+sys.path.insert(0, str(ROOT))
+from backend.app.url_analysis import inspect_url
 
-# Domain splits to guarantee zero domain overlap:
+# Registrable domain splits to guarantee zero domain overlap:
 TRAIN_DOMAINS = {
     'python.org', 'wikipedia.org', 'w3.org', 'apache.org', 'kernel.org', 
-    'gnu.org', 'ietf.org', 'readthedocs.io', 'debian.org', 'ubuntu.com'
+    'gnu.org', 'ietf.org', 'readthedocs.io', 'debian.org', 'ubuntu.com',
+    'postgresql.org', 'rust-lang.org', 'sqlite.org', 'who.int', 'nasa.gov',
+    'weather.gov', 'golang.org', 'curl.se'
 }
+
 VAL_DOMAINS = {
-    'mozilla.org', 'nist.gov', 'github.com', 'archive.org', 'stackoverflow.com'
+    'mozilla.org', 'nist.gov', 'github.com', 'archive.org', 'stackoverflow.com',
+    'berkeley.edu', 'harvard.edu', 'reuters.com', 'arstechnica.com', 'gov.lk',
+    'ox.ac.uk'
 }
+
 TEST_DOMAINS = {
-    'cloudflare.com', 'google.com', 'duckduckgo.com', 'amazon.com', 
-    'fb.com', 'gov.uk', 'data.gov', 'mit.edu', 'stanford.edu'
+    'cloudflare.com', 'google.com', 'duckduckgo.com', 'amazon.com', 'fb.com',
+    'gov.uk', 'data.gov', 'mit.edu', 'stanford.edu', 'cam.ac.uk', 'cbsl.gov.lk',
+    'theguardian.com', 'techcrunch.com'
 }
 
-RAW_TEMPLATES = [
-    # python.org (Train)
-    ("python.org", "https://docs.python.org/3/library/{module}.html"),
-    ("python.org", "https://docs.python.org/3/howto/{topic}.html"),
-    ("python.org", "https://docs.python.org/3/c-api/{capi}.html"),
-    ("python.org", "https://docs.python.org/3/tutorial/{tutorial}.html"),
-    ("python.org", "https://peps.python.org/pep-{pep:04d}/"),
+def generate_benign_dataset():
+    records = {'train': [], 'validation': [], 'test': []}
     
-    # wikipedia.org (Train)
-    ("wikipedia.org", "https://en.wikipedia.org/wiki/{wiki_topic}"),
-    ("wikipedia.org", "https://commons.wikimedia.org/wiki/File:{wiki_file}"),
-    ("wikipedia.org", "https://en.wikipedia.org/w/index.php?title={wiki_topic}&action=history"),
+    # Vocabulary of diverse technical and general topics
+    TOPICS = [
+        'computer-security', 'cryptographic-hash', 'public-key-cryptography', 'transport-layer-security',
+        'domain-name-system', 'ipv6-routing', 'border-gateway-protocol', 'operating-system-kernels',
+        'relational-database-management', 'compiler-optimization', 'distributed-systems-consensus',
+        'machine-learning-algorithms', 'random-forest-classification', 'logistic-regression-models',
+        'virtual-machine-hypervisors', 'digital-signature-algorithms', 'zero-knowledge-proofs',
+        'certificate-authority-trust', 'hypertext-transfer-protocol', 'oauth-authorization-framework',
+        'multi-factor-authentication', 'single-sign-on-architecture', 'content-security-policy',
+        'cross-origin-resource-sharing', 'webassembly-runtime-performance', 'asynchronous-event-loop',
+        'garbage-collection-strategies', 'thread-synchronization-primitives', 'memory-allocator-internals',
+        'sql-query-planner-optimization', 'tcp-congestion-control', 'packet-filtering-firewalls',
+        'container-runtime-namespaces', 'microservices-observability', 'continuous-integration-pipelines',
+        'version-control-internals', 'lexical-analysis-parsing', 'abstract-syntax-trees',
+        'binary-search-tree-rotations', 'dynamic-programming-memoization', 'graph-shortest-path-algorithms'
+    ]
 
-    # w3.org (Train)
-    ("w3.org", "https://www.w3.org/TR/{w3_spec}/"),
-    ("w3.org", "https://www.w3.org/standards/webdesign/{w3_topic}"),
-    ("w3.org", "https://www.w3.org/Consortium/Offices/{w3_office}"),
+    # --- TRAINING DOMAINS ---
+    # 1. python.org
+    for t in TOPICS[:30]:
+        records['train'].append({'text': f"https://docs.python.org/3/library/{t.replace('-', '_')}.html", 'label': 'legitimate', 'group': 'python.org', 'split': 'train'})
+        records['train'].append({'text': f"https://docs.python.org/3/howto/logging_{t.replace('-', '_')}.html", 'label': 'legitimate', 'group': 'python.org', 'split': 'train'})
+        records['train'].append({'text': f"https://docs.python.org/3/c-api/{t.replace('-', '_')}.html", 'label': 'legitimate', 'group': 'python.org', 'split': 'train'})
+        records['train'].append({'text': f"https://docs.python.org/3/tutorial/{t.replace('-', '_')}.html", 'label': 'legitimate', 'group': 'python.org', 'split': 'train'})
+    for p in range(1, 120):
+        records['train'].append({'text': f"https://peps.python.org/pep-{p:04d}/", 'label': 'legitimate', 'group': 'python.org', 'split': 'train'})
 
-    # apache.org (Train)
-    ("apache.org", "https://httpd.apache.org/docs/2.4/mod/mod_{apache_mod}.html"),
-    ("apache.org", "https://commons.apache.org/proper/commons-{apache_comp}/apidocs/index.html"),
-    ("apache.org", "https://spark.apache.org/docs/latest/api/python/reference/{spark_ref}.html"),
+    # 2. wikipedia.org
+    for t in TOPICS:
+        slug = t.replace('-', '_').capitalize()
+        records['train'].append({'text': f"https://en.wikipedia.org/wiki/{slug}", 'label': 'legitimate', 'group': 'wikipedia.org', 'split': 'train'})
+        records['train'].append({'text': f"https://en.wikipedia.org/w/index.php?title={slug}&action=history", 'label': 'legitimate', 'group': 'wikipedia.org', 'split': 'train'})
+        records['train'].append({'text': f"https://en.wikipedia.org/wiki/Talk:{slug}", 'label': 'legitimate', 'group': 'wikipedia.org', 'split': 'train'})
+        records['train'].append({'text': f"https://en.wikipedia.org/wiki/Special:Search?search={t}&go=Go", 'label': 'legitimate', 'group': 'wikipedia.org', 'split': 'train'})
 
-    # kernel.org (Train)
-    ("kernel.org", "https://www.kernel.org/doc/html/latest/admin-guide/{kernel_guide}.html"),
-    ("kernel.org", "https://www.kernel.org/doc/html/latest/subsystem/{kernel_sub}.html"),
-    ("kernel.org", "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/{kernel_path}"),
+    # 3. w3.org
+    for t in TOPICS[:25]:
+        records['train'].append({'text': f"https://www.w3.org/TR/{t}/", 'label': 'legitimate', 'group': 'w3.org', 'split': 'train'})
+        records['train'].append({'text': f"https://www.w3.org/standards/webdesign/{t}", 'label': 'legitimate', 'group': 'w3.org', 'split': 'train'})
 
-    # gnu.org (Train)
-    ("gnu.org", "https://www.gnu.org/software/{gnu_pkg}/manual/html_node/{gnu_node}.html"),
-    ("gnu.org", "https://www.gnu.org/licenses/{gnu_lic}.en.html"),
+    # 4. apache.org
+    for t in TOPICS[:25]:
+        records['train'].append({'text': f"https://httpd.apache.org/docs/2.4/mod/mod_{t.replace('-', '_')}.html", 'label': 'legitimate', 'group': 'apache.org', 'split': 'train'})
+        records['train'].append({'text': f"https://commons.apache.org/proper/commons-{t}/apidocs/index.html", 'label': 'legitimate', 'group': 'apache.org', 'split': 'train'})
 
-    # ietf.org (Train)
-    ("ietf.org", "https://www.rfc-editor.org/rfc/rfc{rfc_num}.html"),
-    ("ietf.org", "https://datatracker.ietf.org/doc/html/draft-{draft_name}"),
+    # 5. kernel.org
+    for t in TOPICS[:25]:
+        records['train'].append({'text': f"https://www.kernel.org/doc/html/latest/admin-guide/{t}.html", 'label': 'legitimate', 'group': 'kernel.org', 'split': 'train'})
+        records['train'].append({'text': f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/{t}.rst", 'label': 'legitimate', 'group': 'kernel.org', 'split': 'train'})
 
-    # readthedocs.io (Train)
-    ("readthedocs.io", "https://requests.readthedocs.io/en/latest/api/{rtd_topic}.html"),
-    ("readthedocs.io", "https://click.palletsprojects.com/en/8.1.x/commands/{rtd_cmd}/"),
+    # 6. gnu.org
+    for t in TOPICS[:25]:
+        records['train'].append({'text': f"https://www.gnu.org/software/{t}/manual/html_node/Invoking.html", 'label': 'legitimate', 'group': 'gnu.org', 'split': 'train'})
+        records['train'].append({'text': f"https://www.gnu.org/software/{t}/manual/html_node/Options.html", 'label': 'legitimate', 'group': 'gnu.org', 'split': 'train'})
 
-    # debian.org (Train)
-    ("debian.org", "https://www.debian.org/doc/manuals/debian-reference/{deb_ref}.en.html"),
-    ("debian.org", "https://packages.debian.org/sid/{deb_pkg}"),
+    # 7. ietf.org
+    for r in range(7000, 7060):
+        records['train'].append({'text': f"https://www.rfc-editor.org/rfc/rfc{r}.html", 'label': 'legitimate', 'group': 'ietf.org', 'split': 'train'})
+        records['train'].append({'text': f"https://datatracker.ietf.org/doc/html/rfc{r}#section-3", 'label': 'legitimate', 'group': 'ietf.org', 'split': 'train'})
 
-    # ubuntu.com (Train)
-    ("ubuntu.com", "https://ubuntu.com/server/docs/{ub_guide}"),
-    ("ubuntu.com", "https://help.ubuntu.com/community/{ub_topic}"),
+    # 8. readthedocs.io
+    for t in TOPICS[:25]:
+        records['train'].append({'text': f"https://{t.replace('-', '')}.readthedocs.io/en/latest/user/quickstart.html", 'label': 'legitimate', 'group': 'readthedocs.io', 'split': 'train'})
+        records['train'].append({'text': f"https://{t.replace('-', '')}.readthedocs.io/en/latest/api/reference.html", 'label': 'legitimate', 'group': 'readthedocs.io', 'split': 'train'})
 
-    # mozilla.org (Val)
-    ("mozilla.org", "https://developer.mozilla.org/en-US/docs/Web/API/{web_api}"),
-    ("mozilla.org", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/{http_header}"),
-    ("mozilla.org", "https://developer.mozilla.org/en-US/docs/Web/CSS/{css_prop}"),
-    ("mozilla.org", "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/{js_guide}"),
+    # 9. debian.org, ubuntu.com, postgresql.org, rust-lang.org, sqlite.org, who.int, nasa.gov, golang.org, curl.se
+    for t in TOPICS[:20]:
+        records['train'].append({'text': f"https://www.debian.org/doc/manuals/debian-reference/{t}.en.html", 'label': 'legitimate', 'group': 'debian.org', 'split': 'train'})
+        records['train'].append({'text': f"https://ubuntu.com/server/docs/{t}-overview", 'label': 'legitimate', 'group': 'ubuntu.com', 'split': 'train'})
+        records['train'].append({'text': f"https://www.postgresql.org/docs/current/{t}.html", 'label': 'legitimate', 'group': 'postgresql.org', 'split': 'train'})
+        records['train'].append({'text': f"https://doc.rust-lang.org/std/{t.replace('-', '/')}/index.html", 'label': 'legitimate', 'group': 'rust-lang.org', 'split': 'train'})
+        records['train'].append({'text': f"https://www.sqlite.org/{t.replace('-', '_')}.html", 'label': 'legitimate', 'group': 'sqlite.org', 'split': 'train'})
+        records['train'].append({'text': f"https://pkg.go.dev/net/{t}", 'label': 'legitimate', 'group': 'golang.org', 'split': 'train'})
+        records['train'].append({'text': f"https://curl.se/docs/{t}.html", 'label': 'legitimate', 'group': 'curl.se', 'split': 'train'})
+        records['train'].append({'text': f"https://www.who.int/publications/i/item/{t}", 'label': 'legitimate', 'group': 'who.int', 'split': 'train'})
+        records['train'].append({'text': f"https://www.nasa.gov/missions/{t}/", 'label': 'legitimate', 'group': 'nasa.gov', 'split': 'train'})
 
-    # nist.gov (Val)
-    ("nist.gov", "https://csrc.nist.gov/publications/detail/sp/{sp_num}/final"),
-    ("nist.gov", "https://www.nist.gov/cyberframework/online-learning/{nist_topic}"),
-    ("nist.gov", "https://nvd.nist.gov/vuln/detail/{cve_id}"),
+    # --- VALIDATION DOMAINS ---
+    # 1. mozilla.org
+    for t in TOPICS[:30]:
+        slug = t.replace('-', '_').capitalize()
+        records['validation'].append({'text': f"https://developer.mozilla.org/en-US/docs/Web/API/{slug}", 'label': 'legitimate', 'group': 'mozilla.org', 'split': 'validation'})
+        records['validation'].append({'text': f"https://developer.mozilla.org/en-US/docs/Web/API/{slug}/Using_{slug}", 'label': 'legitimate', 'group': 'mozilla.org', 'split': 'validation'})
+        records['validation'].append({'text': f"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/{slug}", 'label': 'legitimate', 'group': 'mozilla.org', 'split': 'validation'})
+        records['validation'].append({'text': f"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/{t}", 'label': 'legitimate', 'group': 'mozilla.org', 'split': 'validation'})
 
-    # github.com (Val)
-    ("github.com", "https://docs.github.com/en/actions/{gh_action_topic}"),
-    ("github.com", "https://github.com/torvalds/linux/blob/master/Documentation/{gh_doc}.rst"),
-    ("github.com", "https://github.com/python/cpython/tree/main/{gh_tree}"),
+    # 2. nist.gov
+    for n in range(50, 100):
+        records['validation'].append({'text': f"https://csrc.nist.gov/publications/detail/sp/800-{n}/final", 'label': 'legitimate', 'group': 'nist.gov', 'split': 'validation'})
+        records['validation'].append({'text': f"https://csrc.nist.gov/publications/detail/sp/800-{n}/rev-5/draft", 'label': 'legitimate', 'group': 'nist.gov', 'split': 'validation'})
 
-    # archive.org (Val)
-    ("archive.org", "https://archive.org/details/{archive_item}"),
-    ("archive.org", "https://archive.org/search.php?query={archive_query}"),
+    # 3. github.com
+    for t in TOPICS[:30]:
+        records['validation'].append({'text': f"https://github.com/torvalds/{t}/blob/main/README.md", 'label': 'legitimate', 'group': 'github.com', 'split': 'validation'})
+        records['validation'].append({'text': f"https://github.com/torvalds/{t}/releases/tag/v2.0.0", 'label': 'legitimate', 'group': 'github.com', 'split': 'validation'})
+        records['validation'].append({'text': f"https://github.com/torvalds/{t}/issues/1042", 'label': 'legitimate', 'group': 'github.com', 'split': 'validation'})
+        records['validation'].append({'text': f"https://docs.github.com/en/actions/{t}", 'label': 'legitimate', 'group': 'github.com', 'split': 'validation'})
 
-    # stackoverflow.com (Val)
-    ("stackoverflow.com", "https://stackoverflow.com/questions/{so_id}/{so_slug}"),
-    ("stackoverflow.com", "https://stackoverflow.com/tags/{so_tag}/info"),
+    # 4. stackoverflow.com (50 diverse, distinct questions across programming languages)
+    SO_QUESTIONS = [
+        'how-to-parse-json-in-python-safely', 'centering-a-div-horizontally-and-vertically-in-css',
+        'docker-compose-expose-ports-vs-publish', 'git-rebase-vs-merge-best-practices',
+        'regular-expression-to-match-ipv4-and-ipv6', 'fastapi-dependency-injection-with-yield',
+        'postgresql-jsonb-indexing-with-gin', 'handling-concurrent-requests-in-node-js',
+        'react-native-navigation-pass-props-between-screens', 'sqlite3-database-locked-workarounds-in-python',
+        'rust-borrow-checker-cannot-borrow-as-mutable', 'golang-goroutine-channel-deadlock-prevention',
+        'kubernetes-ingress-nginx-tls-termination', 'typescript-generic-type-inference-function-argument',
+        'css-grid-template-areas-responsive-layout', 'webpack-code-splitting-dynamic-imports',
+        'linux-systemd-service-auto-restart-policy', 'bash-script-read-file-line-by-line-safely',
+        'nginx-reverse-proxy-websockets-configuration', 'redis-pub-sub-message-durability-alternatives',
+        'python-multiprocessing-shared-memory-arrays', 'sqlalchemy-async-session-commit-rollback',
+        'docker-multi-stage-build-minimal-alpine', 'git-submodule-update-init-recursive',
+        'ssh-key-forwarding-agent-configuration-guide', 'curl-send-post-json-header-command-line',
+        'pytest-fixture-scope-function-vs-session', 'javascript-event-delegation-performance',
+        'html5-canvas-draw-image-aspect-ratio', 'pandas-dataframe-groupby-aggregate-named-columns',
+        'django-rest-framework-nested-serializers', 'celery-task-retry-exponential-backoff',
+        'tailwind-css-custom-breakpoint-theme-extend', 'mongodb-aggregation-pipeline-lookup-unwind',
+        'git-stash-include-untracked-pop-conflict', 'ansible-playbook-run-once-per-host-group',
+        'terraform-aws-security-group-rule-cidr', 'vim-search-replace-regex-capture-groups',
+        'python-dataclass-field-default-factory', 'react-useEffect-cleanup-function-abort-controller',
+        'flutter-stateful-widget-lifecycle-methods', 'aws-s3-presigned-url-expiration-policy',
+        'google-cloud-run-container-concurrency-limits', 'graphql-schema-resolvers-query-mutation',
+        'kafka-consumer-group-rebalance-protocol', 'elasticsearch-bool-query-must-should-filter',
+        'c-sharp-async-await-configure-await-false', 'java-virtual-threads-project-loom-guide',
+        'c-plus-plus-smart-pointers-unique-shared', 'ruby-on-rails-active-record-eager-loading'
+    ]
+    for i, slug in enumerate(SO_QUESTIONS):
+        qid = 1000000 + i * 29381
+        records['validation'].append({'text': f"https://stackoverflow.com/questions/{qid}/{slug}", 'label': 'legitimate', 'group': 'stackoverflow.com', 'split': 'validation'})
+        records['validation'].append({'text': f"https://stackoverflow.com/questions/{qid}?answertab=votes", 'label': 'legitimate', 'group': 'stackoverflow.com', 'split': 'validation'})
 
-    # cloudflare.com (Test)
-    ("cloudflare.com", "https://blog.cloudflare.com/{cf_post}/"),
-    ("cloudflare.com", "https://developers.cloudflare.com/workers/runtime-apis/{cf_api}/"),
+    # 5. berkeley.edu, harvard.edu, ox.ac.uk, reuters.com, arstechnica.com, gov.lk
+    for t in TOPICS[:20]:
+        records['validation'].append({'text': f"https://eecs.berkeley.edu/academics/courses/{t}", 'label': 'legitimate', 'group': 'berkeley.edu', 'split': 'validation'})
+        records['validation'].append({'text': f"https://cs50.harvard.edu/x/2026/weeks/{t}/", 'label': 'legitimate', 'group': 'harvard.edu', 'split': 'validation'})
+        records['validation'].append({'text': f"https://www.ox.ac.uk/research/initiatives/{t}", 'label': 'legitimate', 'group': 'ox.ac.uk', 'split': 'validation'})
+        records['validation'].append({'text': f"https://www.reuters.com/technology/{t}-market-outlook-2026/", 'label': 'legitimate', 'group': 'reuters.com', 'split': 'validation'})
+        records['validation'].append({'text': f"https://arstechnica.com/information-technology/2026/02/{t}-deep-dive/", 'label': 'legitimate', 'group': 'arstechnica.com', 'split': 'validation'})
+        records['validation'].append({'text': f"https://www.gov.lk/services/{t}-portal", 'label': 'legitimate', 'group': 'gov.lk', 'split': 'validation'})
 
-    # google.com (Test)
-    ("google.com", "https://www.google.com/search?q={google_query}&hl=en"),
-    ("google.com", "https://developers.google.com/protocol-buffers/docs/{proto_topic}"),
-    ("google.com", "https://cloud.google.com/security/products/{gcp_prod}"),
+    # --- HELD-OUT TEST DOMAINS ---
+    # cloudflare, google, ddg, amazon, fb, gov.uk, data.gov, mit.edu, stanford.edu, cam.ac.uk, cbsl.gov.lk, theguardian.com, techcrunch.com
+    for t in TOPICS[:30]:
+        records['test'].append({'text': f"https://blog.cloudflare.com/{t}-architecture-and-defense/", 'label': 'legitimate', 'group': 'cloudflare.com', 'split': 'test'})
+        records['test'].append({'text': f"https://developers.cloudflare.com/workers/runtime-apis/{t}/", 'label': 'legitimate', 'group': 'cloudflare.com', 'split': 'test'})
+        records['test'].append({'text': f"https://www.google.com/search?q={t.replace('-', '+')}&hl=en", 'label': 'legitimate', 'group': 'google.com', 'split': 'test'})
+        records['test'].append({'text': f"https://duckduckgo.com/?q={t.replace('-', '+')}&ia=web", 'label': 'legitimate', 'group': 'duckduckgo.com', 'split': 'test'})
+        records['test'].append({'text': f"https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/{t}.html", 'label': 'legitimate', 'group': 'amazon.com', 'split': 'test'})
+        records['test'].append({'text': f"https://aws.amazon.com/security/{t}-best-practices/", 'label': 'legitimate', 'group': 'amazon.com', 'split': 'test'})
+        records['test'].append({'text': f"https://engineering.fb.com/2026/01/15/developer-tools/{t}/", 'label': 'legitimate', 'group': 'fb.com', 'split': 'test'})
+        records['test'].append({'text': f"https://www.gov.uk/guidance/{t}-policy-framework", 'label': 'legitimate', 'group': 'gov.uk', 'split': 'test'})
+        records['test'].append({'text': f"https://catalog.data.gov/dataset/{t}-metrics-report", 'label': 'legitimate', 'group': 'data.gov', 'split': 'test'})
+        records['test'].append({'text': f"https://ocw.mit.edu/courses/{t}/pages/syllabus/", 'label': 'legitimate', 'group': 'mit.edu', 'split': 'test'})
+        records['test'].append({'text': f"https://cs.stanford.edu/people/faculty/{t}-group.html", 'label': 'legitimate', 'group': 'stanford.edu', 'split': 'test'})
+        records['test'].append({'text': f"https://www.cam.ac.uk/research/features/{t}", 'label': 'legitimate', 'group': 'cam.ac.uk', 'split': 'test'})
+        records['test'].append({'text': f"https://www.cbsl.gov.lk/en/publications/{t}", 'label': 'legitimate', 'group': 'cbsl.gov.lk', 'split': 'test'})
+        records['test'].append({'text': f"https://www.theguardian.com/technology/2026/mar/10/{t}", 'label': 'legitimate', 'group': 'theguardian.com', 'split': 'test'})
+        records['test'].append({'text': f"https://techcrunch.com/2026/02/14/{t}-enterprise-overview/", 'label': 'legitimate', 'group': 'techcrunch.com', 'split': 'test'})
 
-    # duckduckgo.com (Test)
-    ("duckduckgo.com", "https://duckduckgo.com/?q={ddg_query}&ia=web"),
-
-    # amazon.com (Test)
-    ("amazon.com", "https://aws.amazon.com/security/identity-and-compliance/{aws_topic}/"),
-    ("amazon.com", "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/{ec2_guide}.html"),
-
-    # fb.com (Test)
-    ("fb.com", "https://engineering.fb.com/{fb_year}/{fb_month}/{fb_day}/{fb_slug}/"),
-
-    # gov.uk (Test)
-    ("gov.uk", "https://www.gov.uk/government/organisations/{gov_org}"),
-    ("gov.uk", "https://www.gov.uk/guidance/{gov_guide}"),
-
-    # data.gov (Test)
-    ("data.gov", "https://data.gov/metrics/{data_metric}/"),
-    ("data.gov", "https://catalog.data.gov/dataset/{data_dataset}"),
-
-    # mit.edu (Test)
-    ("mit.edu", "https://ocw.mit.edu/courses/{mit_course}/pages/{mit_page}/"),
-
-    # stanford.edu (Test)
-    ("stanford.edu", "https://cs.stanford.edu/people/{stanford_person}/{stanford_path}.html"),
-]
-
-WORDS = [
-    'os', 'sys', 'math', 'urllib', 'json', 're', 'socket', 'hashlib', 'sqlite3', 'unittest',
-    'security', 'authentication', 'encryption', 'cryptography', 'network', 'protocol', 'database',
-    'algorithm', 'performance', 'distributed', 'architecture', 'interface', 'compiler', 'runtime',
-    'memory', 'storage', 'concurrency', 'asynchronous', 'optimization', 'standards', 'compliance',
-    'monitoring', 'observability', 'telemetry', 'analytics', 'framework', 'pipeline', 'container'
-]
-
-def generate_urls():
-    urls = []
-    
-    # 1. Python docs
-    for w1 in WORDS:
-        for w2 in ['parser', 'client', 'server', 'config', 'utils', 'handler']:
-            urls.append(('python.org', f"https://docs.python.org/3/library/{w1}_{w2}.html"))
-            urls.append(('python.org', f"https://docs.python.org/3/howto/logging_{w1}_{w2}.html"))
-    for i in range(1, 150):
-        urls.append(('python.org', f"https://peps.python.org/pep-{i:04d}/"))
-
-    # 2. Wikipedia topics
-    for w in WORDS:
-        urls.append(('wikipedia.org', f"https://en.wikipedia.org/wiki/{w.capitalize()}_protocol"))
-        urls.append(('wikipedia.org', f"https://en.wikipedia.org/wiki/{w.capitalize()}_algorithm"))
-        urls.append(('wikipedia.org', f"https://en.wikipedia.org/wiki/Comparison_of_{w}_software"))
-        urls.append(('wikipedia.org', f"https://en.wikipedia.org/w/index.php?title={w}&action=history"))
-
-    # 3. W3C specs
-    for w in ['html5', 'webdriver', 'csp', 'cors', 'webrtc', 'wasm', 'svg', 'xpath', 'xml', 'css3']:
-        for sub in ['spec', 'primer', 'rec', 'test-suite']:
-            urls.append(('w3.org', f"https://www.w3.org/TR/{w}-{sub}/"))
-            urls.append(('w3.org', f"https://www.w3.org/TR/2026/REC-{w}-{sub}-20260415/"))
-
-    # 4. Apache docs
-    for w in ['ssl', 'rewrite', 'proxy', 'headers', 'deflate', 'auth_basic', 'cache', 'log_config']:
-        urls.append(('apache.org', f"https://httpd.apache.org/docs/2.4/mod/mod_{w}.html"))
-        urls.append(('apache.org', f"https://commons.apache.org/proper/commons-{w}/apidocs/index.html"))
-
-    # 5. Linux Kernel & Git
-    for w in ['memory-barriers', 'booting', 'sysfs', 'namespaces', 'cgroups', 'ebpf', 'networking']:
-        urls.append(('kernel.org', f"https://www.kernel.org/doc/html/latest/admin-guide/{w}.html"))
-        urls.append(('kernel.org', f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/{w}.rst"))
-
-    # 6. GNU
-    for w in ['bash', 'coreutils', 'gcc', 'glibc', 'make', 'gdb', 'tar', 'grep']:
-        urls.append(('gnu.org', f"https://www.gnu.org/software/{w}/manual/html_node/Invoking-{w}.html"))
-        urls.append(('gnu.org', f"https://www.gnu.org/software/{w}/manual/html_node/{w}-Options.html"))
-
-    # 7. IETF RFCs
-    for r in [7230, 7231, 7540, 8446, 5246, 2616, 1034, 1035, 3986, 6749, 7519, 8259]:
-        urls.append(('ietf.org', f"https://www.rfc-editor.org/rfc/rfc{r}.html"))
-        urls.append(('ietf.org', f"https://datatracker.ietf.org/doc/html/rfc{r}#section-3"))
-
-    # 8. ReadtheDocs
-    for w in ['quickstart', 'advanced', 'authentication', 'configuration', 'exceptions']:
-        urls.append(('readthedocs.io', f"https://requests.readthedocs.io/en/latest/user/{w}.html"))
-        urls.append(('readthedocs.io', f"https://urllib3.readthedocs.io/en/stable/reference/{w}.html"))
-
-    # 9. Debian & Ubuntu
-    for w in ['system-administration', 'network-setup', 'security-updates']:
-        urls.append(('debian.org', f"https://www.debian.org/doc/manuals/debian-reference/{w}.en.html"))
-        urls.append(('ubuntu.com', f"https://ubuntu.com/server/docs/{w}-overview"))
-
-    # --- VALIDATION SET (mozilla, nist, github, archive, stackoverflow) ---
-    for w in WORDS:
-        urls.append(('mozilla.org', f"https://developer.mozilla.org/en-US/docs/Web/API/{w.capitalize()}Stream"))
-        urls.append(('mozilla.org', f"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-{w.capitalize()}-Policy"))
-        urls.append(('mozilla.org', f"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/{w}"))
-    for sp in [53, 63, 88, 137, 161, 190, 207]:
-        urls.append(('nist.gov', f"https://csrc.nist.gov/publications/detail/sp/800-{sp}/final"))
-        urls.append(('nist.gov', f"https://csrc.nist.gov/publications/detail/sp/800-{sp}/rev-5/draft"))
-    for w in WORDS[:15]:
-        urls.append(('github.com', f"https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#{w}"))
-        urls.append(('github.com', f"https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/{w}.rst"))
-    for i in range(1001, 1080):
-        urls.append(('stackoverflow.com', f"https://stackoverflow.com/questions/{i*123}/how-to-configure-secure-headers-in-python"))
-
-    # --- HELD-OUT TEST SET (cloudflare, google, ddg, amazon, fb, gov.uk, data.gov, mit.edu, stanford.edu) ---
-    for w in WORDS:
-        urls.append(('cloudflare.com', f"https://blog.cloudflare.com/mitigating-{w}-attacks-with-cloudflare-workers/"))
-        urls.append(('google.com', f"https://www.google.com/search?q={w}+documentation+standards&hl=en"))
-        urls.append(('duckduckgo.com', f"https://duckduckgo.com/?q={w}+best+practices&ia=web"))
-        urls.append(('amazon.com', f"https://aws.amazon.com/security/identity-and-compliance/{w}-guidance/"))
-        urls.append(('fb.com', f"https://engineering.fb.com/2026/02/10/security/{w}-architecture-overview/"))
-        urls.append(('gov.uk', f"https://www.gov.uk/government/publications/national-cyber-strategy-{w}-annex"))
-        urls.append(('data.gov', f"https://catalog.data.gov/dataset/federal-{w}-metrics-2026"))
-        urls.append(('mit.edu', f"https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-858-computer-systems-security-fall-2026/pages/{w}-notes/"))
-        urls.append(('stanford.edu', f"https://cs.stanford.edu/people/faculty/{w}-research-group.html"))
-
-    # Split by registrable domain
-    split_data = {'train': [], 'validation': [], 'test': []}
-    seen = set()
-    
-    for domain, u in urls:
-        if u in seen:
-            continue
-        seen.add(u)
-        ext = EXTRACT(domain)
-        reg_domain = ext.top_domain_under_public_suffix or domain
+    # Verify zero leakage across splits:
+    split_domains = {}
+    for split in ['train', 'validation', 'test']:
+        domains = set()
+        for r in records[split]:
+            info = inspect_url(r['text'])
+            reg = info['registrable_domain']
+            assert reg, f"Missing registrable domain for {r['text']}"
+            domains.add(reg)
+        split_domains[split] = domains
         
-        if reg_domain in TRAIN_DOMAINS:
-            split_data['train'].append({'text': u, 'label': 'legitimate', 'group': reg_domain, 'split': 'train'})
-        elif reg_domain in VAL_DOMAINS:
-            split_data['validation'].append({'text': u, 'label': 'legitimate', 'group': reg_domain, 'split': 'validation'})
-        elif reg_domain in TEST_DOMAINS:
-            split_data['test'].append({'text': u, 'label': 'legitimate', 'group': reg_domain, 'split': 'test'})
-        else:
-            split_data['train'].append({'text': u, 'label': 'legitimate', 'group': reg_domain, 'split': 'train'})
-
-    return split_data
-
-def main():
-    data = generate_urls()
-    print("Generated benign deep-path dataset:")
-    print(f"  Train:      {len(data['train'])} URLs across {len({r['group'] for r in data['train']})} domains")
-    print(f"  Validation: {len(data['validation'])} URLs across {len({r['group'] for r in data['validation']})} domains")
-    print(f"  Test:       {len(data['test'])} URLs across {len({r['group'] for r in data['test']})} domains")
+    s1 = split_domains['train']
+    s2 = split_domains['validation']
+    s3 = split_domains['test']
     
-    # Assert zero domain leakage between splits
-    train_groups = {r['group'] for r in data['train']}
-    val_groups = {r['group'] for r in data['validation']}
-    test_groups = {r['group'] for r in data['test']}
+    assert len(s1.intersection(s2)) == 0, f"Train/Val domain leakage: {s1.intersection(s2)}"
+    assert len(s1.intersection(s3)) == 0, f"Train/Test domain leakage: {s1.intersection(s3)}"
+    assert len(s2.intersection(s3)) == 0, f"Val/Test domain leakage: {s2.intersection(s3)}"
     
-    assert not (train_groups & val_groups), f"Leakage train-val: {train_groups & val_groups}"
-    assert not (train_groups & test_groups), f"Leakage train-test: {train_groups & test_groups}"
-    assert not (val_groups & test_groups), f"Leakage val-test: {val_groups & test_groups}"
-    print("ZERO DOMAIN LEAKAGE VERIFIED across train, validation, and test splits!")
+    print("Zero domain leakage verified across all splits!")
+    print(f"Train samples: {len(records['train'])} across {len(s1)} domains")
+    print(f"Validation samples: {len(records['validation'])} across {len(s2)} domains")
+    print(f"Test samples: {len(records['test'])} across {len(s3)} domains")
     
-    out_path = ROOT / 'ml' / 'data' / 'benign_deep_paths.json'
-    out_path.write_text(json.dumps(data, indent=2), encoding='utf-8')
-    print(f"Saved dataset to {out_path}")
+    out_file = ROOT / 'ml' / 'data' / 'benign_deep_paths.json'
+    out_file.write_text(json.dumps(records, indent=2), encoding='utf-8')
+    print(f"Saved benign deep paths to {out_file}")
 
 if __name__ == '__main__':
-    main()
+    generate_benign_dataset()

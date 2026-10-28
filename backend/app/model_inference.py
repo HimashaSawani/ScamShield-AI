@@ -4,7 +4,7 @@ import json
 import os
 from pathlib import Path
 from functools import lru_cache
-from .model_features import URL_SCHEMA,URL_FEATURES,url_features
+from .model_features import URL_SCHEMA,URL_FEATURES,URL_SCHEMAS,url_features
 
 def read_json(path,expected):
     raw=path.read_bytes()
@@ -25,7 +25,10 @@ def load_bundle(folder,manifest_hash):
         data=read_json(path,entry['sha256'])
         if not entry.get('validation_eligible') or not data.get('validation_eligible'):continue
         if data['kind']!=kind:raise ValueError('Model kind mismatch')
-        if kind=='url' and (data['feature_schema']!=URL_SCHEMA or data['url_features']!=URL_FEATURES):raise ValueError('Feature schema mismatch')
+        if kind=='url':
+            schema=data.get('feature_schema')
+            expected_feats=URL_SCHEMAS.get(schema)
+            if expected_feats is None or data.get('url_features')!=expected_feats:raise ValueError('Feature schema mismatch')
         if data['type']=='tfidf-logistic':
             import numpy as np
             from scipy.sparse import hstack
@@ -47,10 +50,12 @@ def predict(data,text):
         x=hstack([v.transform([text]) for v in data['_vectors']]);logits=np.asarray(x@np.array(data['coef']).T).ravel()+np.array(data['intercept'])
         scores=np.exp(logits-logits.max());scores/=scores.sum()
     elif data['type']=='numeric-logistic':
-        x=(np.array(url_features(text))-data['mean'])/data['scale']
+        schema=data.get('feature_schema','url-static-1')
+        x=(np.array(url_features(text,schema=schema))-data['mean'])/data['scale']
         z=float(np.array(data['coef'])[0]@x+data['intercept'][0]);p=1/(1+np.exp(-np.clip(z,-700,700)));scores=np.array([1-p,p])
     elif data['type']=='numeric-forest':
-        x=np.array(url_features(text),dtype=np.float32);scores=np.zeros(len(data['classes']))
+        schema=data.get('feature_schema','url-static-1')
+        x=np.array(url_features(text,schema=schema),dtype=np.float32);scores=np.zeros(len(data['classes']))
         for tree in data['trees']:
             node=0
             while tree['left'][node]!=tree['right'][node]:node=tree['left'][node] if x[tree['feature'][node]]<=tree['threshold'][node] else tree['right'][node]
