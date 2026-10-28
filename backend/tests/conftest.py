@@ -29,3 +29,4 @@ def test_environment_lifecycle():
         shutil.rmtree(TEST_DIR, ignore_errors=True)
     except Exception:
         pass
+
