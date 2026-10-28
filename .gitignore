@@ -20,12 +20,27 @@ apps/mobile/dist-*/
 *.sqlite-*
 storage/
 storage_app/
+storage_test_pg/
 ml/artifacts/
 ml/prepared/
 ml/data/*.zip
 infra/models/*.json
 backups/
 artifacts/
+# Generated test evidence, verification reports and internal evaluation data
+docs/*.json
+docs/evaluation/
+docs/SCAMSHIELD_*.md
+docs/PORTFOLIO_DEMO_GUIDE.md
+docs/release-verification.md
+docs/staging-android.md
+docs/status.md
+docs/v1-checklist.md
+docs/rules-evaluation.md
+docs/data-collection-checklist.md
+docs/dataset-source-review.md
+docs/model-workflow-v1.md
+docs/verified-dependencies.txt
 *.jks
 *.keystore
 *.p12

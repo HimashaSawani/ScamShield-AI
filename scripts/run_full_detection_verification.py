@@ -83,15 +83,17 @@ def main():
     assert status == 200, "Backend /api/ready failed"
 
     # 1.2 Authenticate as Demo User
+    demo_email = os.getenv("SCAMSHIELD_DEMO_EMAIL", "demo@scamshield.test")
+    demo_password = os.getenv("SCAMSHIELD_DEMO_PASSWORD", "")
     status, auth_data = api_call("/auth/login", method="POST", body={
-        "email": "demo@scamshield.test",
-        "password": "ScamShieldDemo123!"
+        "email": demo_email,
+        "password": demo_password
     })
     if status != 200:
         subprocess.run([sys.executable, "-m", "backend.app.demo"], check=True)
         status, auth_data = api_call("/auth/login", method="POST", body={
-            "email": "demo@scamshield.test",
-            "password": "ScamShieldDemo123!"
+            "email": demo_email,
+            "password": demo_password
         })
     assert status == 200 and "token" in auth_data, "Demo authentication failed"
     token = auth_data["token"]

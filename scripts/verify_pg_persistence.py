@@ -6,9 +6,16 @@ from pathlib import Path
 from sqlalchemy import create_engine, select, text
 from sqlalchemy.orm import sessionmaker
 
-# Target isolated PostgreSQL database
-PG_URL = os.getenv("SCAMSHIELD_TEST_DATABASE_URL", "postgresql+psycopg://scamshield:scamshield@127.0.0.1:5432/scamshield_test")
-TEST_STORAGE = Path("D:/ScamShield AI/storage_test_pg")
+# Require explicit test database URL; do not commit default credentials.
+PG_URL = os.getenv("SCAMSHIELD_TEST_DATABASE_URL")
+if not PG_URL:
+    raise SystemExit(
+        "SCAMSHIELD_TEST_DATABASE_URL environment variable is required to run PostgreSQL persistence tests.\n"
+        "Example: SCAMSHIELD_TEST_DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/scamshield_test'"
+    )
+
+ROOT = Path(__file__).resolve().parents[1]
+TEST_STORAGE = ROOT / "storage_test_pg"
 TEST_STORAGE.mkdir(parents=True, exist_ok=True)
 
 os.environ["DATABASE_URL"] = PG_URL
@@ -18,7 +25,7 @@ from backend.app.db import Base, User, Scan, Session, now
 from backend.app.worker import process_one
 
 def run_persistence_verification():
-    print(f"Connecting to test database: {PG_URL}")
+    print(f"Connecting to test database: {PG_URL.split('@')[-1] if '@' in PG_URL else 'configured test DB'}")
     engine = create_engine(PG_URL)
     LocalSession = sessionmaker(engine, expire_on_commit=False)
 

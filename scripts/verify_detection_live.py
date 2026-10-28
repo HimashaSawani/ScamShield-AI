@@ -21,7 +21,9 @@ def main():
     def api(path,body=None):
         request=urllib.request.Request(base+'/api'+path,data=json.dumps(body).encode() if body is not None else None,headers={**({'Authorization':'Bearer '+token} if token else {}),'Content-Type':'application/json'})
         with urllib.request.urlopen(request,timeout=15) as response:return json.load(response)
-    token=api('/auth/login',{'email':'demo@scamshield.test','password':'ScamShieldDemo123!'})['token']
+    demo_email = os.getenv('SCAMSHIELD_DEMO_EMAIL', 'demo@scamshield.test')
+    demo_password = os.getenv('SCAMSHIELD_DEMO_PASSWORD', '')
+    token=api('/auth/login',{'email':demo_email,'password':demo_password})['token']
     before_path=ROOT/'artifacts'/'detection-before.json';before_path.parent.mkdir(exist_ok=True)
     def hashes():
         with closing(sqlite3.connect(f'{(ROOT/"scamshield.db").as_uri()}?mode=ro',uri=True)) as db:

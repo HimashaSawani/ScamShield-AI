@@ -16,7 +16,9 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--expect-fallback',action='store_true');args=parser.parse_args()
     with sqlite3.connect('file:scamshield.db?mode=ro',uri=True) as db:before={id:hashlib.sha256(result.encode()).hexdigest() for id,result in db.execute("SELECT id,result FROM scans WHERE status='completed'")}
     with httpx.Client(base_url='http://127.0.0.1:8015/api',timeout=30) as client:
-        auth=client.post('/auth/login',json={'email':'demo@scamshield.test','password':'ScamShieldDemo123!'});auth.raise_for_status();client.headers['Authorization']='Bearer '+auth.json()['token']
+        demo_email = os.getenv('SCAMSHIELD_DEMO_EMAIL', 'demo@scamshield.test')
+        demo_password = os.getenv('SCAMSHIELD_DEMO_PASSWORD', '')
+        auth=client.post('/auth/login',json={'email':demo_email,'password':demo_password});auth.raise_for_status();client.headers['Authorization']='Bearer '+auth.json()['token']
         def poll(id):
             for _ in range(160):
                 response=client.get('/scans/'+id);response.raise_for_status();scan=response.json()
