@@ -1,0 +1,117 @@
+{
+  "executed_at": "2026-10-28T02:53:49Z",
+  "all_passed": true,
+  "workflow_count": 10,
+  "workflows": {
+    "A_register_verify_login_logout": {
+      "status": "PASS",
+      "evidence": {
+        "register_http": 201,
+        "unverified_login_http": 403,
+        "verify_http": 200,
+        "login_http": 200,
+        "logout_http": 200,
+        "post_logout_me_http": 401
+      }
+    },
+    "B_suspicious_url_scan": {
+      "status": "PASS",
+      "evidence": {
+        "scan_id": "3efaca22fe96e3401189f48e5218d87d",
+        "assessment": "Medium",
+        "score": 30,
+        "model_mode": "rules-plus-model",
+        "models": [
+          {
+            "kind": "url",
+            "version": "scamshield-url-v1",
+            "prediction": "phishing",
+            "scope": "Historical English-dominant SMS benchmark / static URL syntax only; not calibrated or verified sender identity",
+            "effect": "No rule evidence or score changed"
+          }
+        ],
+        "evidence_codes": [
+          "unencrypted",
+          "brand_host"
+        ],
+        "in_history": true
+      }
+    },
+    "C_benign_url_scan": {
+      "status": "PASS",
+      "evidence": {
+        "scan_id": "09423d6118bb0abdd6d573c9230debd1",
+        "assessment": "Inconclusive",
+        "score": 0,
+        "model_prediction": "legitimate"
+      }
+    },
+    "D_suspicious_message_scan": {
+      "status": "PASS",
+      "evidence": {
+        "scan_id": "f1e10f41bb0c76fcf67cb4c1909498d2",
+        "assessment": "High",
+        "score": 65,
+        "evidence_codes": [
+          "credentials",
+          "urgency"
+        ]
+      }
+    },
+    "E_benign_message_scan": {
+      "status": "PASS",
+      "evidence": {
+        "scan_id": "916562bdf6f3adc56e5dace0b311ae88",
+        "assessment": "Inconclusive",
+        "score": 0,
+        "evidence_count": 0
+      }
+    },
+    "F_screenshot_ocr_correction_detection": {
+      "status": "PASS",
+      "evidence": {
+        "invalid_image_http": 422,
+        "scan_id": "7ad126b92a84f74d422bc9fdb01e6a33",
+        "ocr_stage_status": "partially_completed",
+        "final_status": "completed",
+        "final_assessment": "High",
+        "final_score": 65
+      }
+    },
+    "H_two_user_private_scan_isolation": {
+      "status": "PASS",
+      "evidence": {
+        "cross_user_read_http": 404,
+        "cross_user_delete_http": 404
+      }
+    },
+    "G_analyst_review_verdict_in_history": {
+      "status": "PASS",
+      "evidence": {
+        "report_id": "9b567cbd943e90aeff8d297911d09b2d",
+        "queue_http": 200,
+        "decision_http": 200,
+        "user_history_verdict": "Confirmed scam"
+      }
+    },
+    "I_worker_interruption_and_recovery": {
+      "status": "PASS",
+      "evidence": {
+        "scan_id": "f4564e74aeab58d9c53782b0e93a3306",
+        "recovered_from_stale_lease": true,
+        "final_status": "completed",
+        "final_assessment": "High"
+      }
+    },
+    "J_account_deletion_data_cleanup": {
+      "status": "PASS",
+      "evidence": {
+        "delete_http": 200,
+        "post_delete_scans_http": 401,
+        "remaining_user_scans_in_db": 0,
+        "remaining_reports_in_db": 0,
+        "remaining_attachments_on_disk": 0
+      }
+    }
+  }
+}
