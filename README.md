@@ -21,32 +21,32 @@ ScamShield AI is a local-first, privacy-preserving cyber defense platform for de
 
 ```mermaid
 flowchart LR
-    subgraph Clients["Clients"]
-        Web["Web Dashboard (apps/dashboard)"]
-        Mobile["Android App (apps/mobile)"]
+    subgraph Clients [Clients]
+        Web[Web Dashboard - apps/dashboard]
+        Mobile[Android App - apps/mobile]
     end
 
-    subgraph Backend["FastAPI Server (backend/app/main.py)"]
-        API["REST API, Auth, TOTP MFA & RBAC"]
+    subgraph Server [FastAPI Backend Server]
+        API[REST API, Auth, TOTP MFA and RBAC]
     end
 
-    subgraph Storage["Local Persistence"]
-        DB[("SQLite WAL / PostgreSQL")]
-        Files[("Private Upload Storage")]
+    subgraph Storage [Local Persistence]
+        DB[(SQLite WAL / PostgreSQL)]
+        Files[Private Upload Storage]
     end
 
-    subgraph Worker["Background Worker (backend/app/worker.py)"]
-        Queue["Lease-Based Job Processor & Heartbeat"]
-        Rules["Rules Engine (rules-1.2.0) + PSL URL Parser"]
-        ML["SHA256-Verified URL Classifier (scamshield-url-v2)"]
-        OCR["Tesseract OCR (eng/sin/tam)"]
+    subgraph Worker [Background Worker]
+        Queue[Lease-Based Job Queue]
+        Rules[Rules Engine v1.2.0 and PSL Parser]
+        ML[URL Classifier scamshield-url-v2]
+        OCR[Tesseract OCR Engine]
     end
 
     Web -->|Same-Origin HTTP| API
     Mobile -->|EXPO_PUBLIC_API_URL| API
     API --> DB
     API --> Files
-    Queue -->|Claim & Persist Scans| DB
+    Queue -->|Claim and Persist Scans| DB
     Queue --> Rules
     Queue --> ML
     Queue --> OCR
@@ -129,6 +129,44 @@ cd apps/mobile
 npm ci
 cd ../..
 ```
+
+---
+
+## Environment Configuration
+
+ScamShield AI uses template `.env.example` files to document configuration while keeping operational secrets and credentials out of source control.
+
+| File | Purpose | Git Status |
+|---|---|---|
+| `.env.example` | Root template for backend API and background worker | **Tracked** (Safe defaults & placeholders only) |
+| `.env` | Active local backend environment variables | **Ignored** (`.gitignore` protects secrets) |
+| `.env.staging.example` | Staging / Docker Compose reference template | **Tracked** (Non-secret placeholders) |
+| `apps/mobile/.env.example` | Mobile Expo client template (`EXPO_PUBLIC_API_URL`) | **Tracked** (LAN / emulator URL examples) |
+| `apps/mobile/.env` | Active local mobile environment | **Ignored** (`.gitignore` protects secrets) |
+
+### Setting Up Local Environment Files
+
+To configure your local environment from the templates:
+
+```powershell
+# 1. Backend environment setup
+Copy-Item .env.example .env
+
+# 2. Mobile app environment setup
+Copy-Item apps/mobile/.env.example apps/mobile/.env
+```
+
+### Key Environment Variables
+
+- `DEV_EMAIL_TOKENS` *(Default in `.env.example`: `0`)*:
+  - **Local Development (`DEV_EMAIL_TOKENS=1`):** Generates email verification tokens locally and outputs them to the console log, allowing instant registration testing without an external SMTP server.
+  - **Staging / Production (`DEV_EMAIL_TOKENS=0`):** Enforces genuine outbound SMTP delivery via `SMTP_HOST`, `SMTP_PORT`, and TLS. **Never set `DEV_EMAIL_TOKENS=1` in staging or public deployments.**
+- `SCAMSHIELD_MODEL_DIR` & `SCAMSHIELD_MODEL_MANIFEST_SHA256`:
+  - Specifies the active release model bundle (`ml/artifacts/v2-json`) and validates the integrity of `manifest.json` against the SHA256 pin (`b9c99c7e5bc4e003357748dd343ca5f9e44fc9c24f03c611f77e4d342ca33606`).
+- `SCAMSHIELD_DEMO_PASSWORD` *(Optional)*:
+  - If unset when running `python -m backend.app.demo`, the script generates a secure random 16-character password and prints it to the console. You can optionally supply your own local demo password via this environment variable. No passwords or tokens are hardcoded into the repository.
+- `EXPO_PUBLIC_API_URL` *(Mobile)*:
+  - Points the Expo app to the backend: `http://10.0.2.2:8000/api` for the Android emulator or `http://<YOUR-LAN-IP>:8000/api` for a physical phone on the same Wi-Fi network.
 
 ---
 
