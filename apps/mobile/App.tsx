@@ -361,29 +361,6 @@ export default function App() {
                 })
               )}
 
-              {/* One-tap Demo Login Button */}
-              {auth === 'login' &&
-                button(
-                  'Try Demo — Fill & Sign In ↗',
-                  () =>
-                    run(async () => {
-                      setEmail('demo@scamshield.test');
-                      setPassword('ScamShieldDemo123!');
-                      setOtp('');
-                      setRecoveryCode('');
-                      const d = await api('/auth/login', 'POST', {
-                        email: 'demo@scamshield.test',
-                        password: 'ScamShieldDemo123!',
-                        otp: '',
-                        recovery_code: '',
-                      });
-                      await SecureStore.setItemAsync('session', d.token);
-                      setToken(d.token);
-                      setPassword('');
-                    }),
-                  true
-                )}
-
               {(['login', 'register', 'verify', 'resend', 'forgot', 'reset'] as const)
                 .filter(a => a !== auth)
                 .map(a => (

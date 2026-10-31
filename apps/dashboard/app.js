@@ -14,13 +14,11 @@ $('.header-right').insertAdjacentHTML('beforeend','<a id="mobile-account" class=
 $('#mobile-logout').onclick=()=>$('#logout').click();
 // Optional local demo uses the normal login flow and an ordinary user account.
 if(['localhost','127.0.0.1','[::1]'].includes(location.hostname)){
-  $('#auth-form').insertAdjacentHTML('afterend',`<div class="demo-card"><div class="overline">EXPLORE THE DEMO</div><p>Email: <strong>demo@scamshield.test</strong><br>Password: <strong>ScamShieldDemo123!</strong></p><button type="button" class="secondary" id="try-demo">Try demo — fill & sign in ↗</button><small>Shared local demo account. Use sample messages only.</small></div>`);
+  $('#auth-form').insertAdjacentHTML('afterend',`<div class="demo-card"><div class="overline">EXPLORE THE DEMO</div><p>Email: <strong>demo@scamshield.test</strong><br><small>Password generated via <code>python -m backend.app.demo</code> or <code>SCAMSHIELD_DEMO_PASSWORD</code></small></p><button type="button" class="secondary" id="try-demo">Fill demo email ↗</button><small>Shared local demo account. Use sample messages only.</small></div>`);
   $('#try-demo').onclick=()=>{
     if(mode!=='login')$('#toggle-auth').click();
     $('#email').value='demo@scamshield.test';
-    $('#password').value='ScamShieldDemo123!';
-    $('#otp').value='';$('#recovery-code').value='';
-    $('#auth-form').requestSubmit();
+    $('#password').focus();
   };
 }
 $('#toggle-auth').onclick=()=>{mode=mode==='login'?'register':'login';$('#auth-title').textContent=mode==='login'?'Welcome back.':'Start with clarity.';$('#auth-submit').textContent=mode==='login'?'Sign in ↗':'Create account ↗';$('#toggle-auth').textContent=mode==='login'?'Create an account':'Already have an account?';$('#auth-help').textContent=mode==='login'?'Sign in to scan messages and review your findings.':'Create your private ScamShield workspace.'};
